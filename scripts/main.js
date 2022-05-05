@@ -48,11 +48,12 @@ function createKeyboard() {
   console.log(`после: ${language}___${register}___${shiftState}___${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
 
   const observer = new ResizeObserver((entries) => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const entry of entries) {
       if (entry.contentBoxSize) {
         textAreaWidth = Math.round(entry.contentBoxSize[0].inlineSize);
         textAreaHeight = Math.round(entry.contentBoxSize[0].blockSize);
-        console.log(` ширина ${textAreaWidth} X высота ${textAreaHeight}`);
+        // console.log(` ширина ${textAreaWidth} X высота ${textAreaHeight}`);
       }
     }
   });
@@ -61,9 +62,10 @@ function createKeyboard() {
     keyboardContainer.innerHTML = keyboard;
   }
 
-  createUI({
+  const methodsUI = createUI({
     appendKeyboard,
     dict,
+    // eslint-disable-next-line no-use-before-define
     methodsForButtons,
     register,
     allText,
@@ -78,86 +80,87 @@ function createKeyboard() {
     let timeoutIdForAddSymbol;
     let intervalIdForAddSymbol;
 
-    function changeFlag(elem1, elem2) {
-      elem1.style.backgroundImage = dict.flag;
-      elem2.disabled = true;
-      elem2.style.backgroundImage = dict.contrFlag;
-    }
-
-    function setCursor(textarea) {
-      textarea.focus();
-      textarea.style.caretColor = 'transparent';
+    function setCursor() {
+      methodsUI.focusTextarea();
+      methodsUI.changeTextareaStyleProperty('caretColor', 'transparent');
       setTimeout(() => {
-        textarea.style.caretColor = 'black';
+        methodsUI.changeTextareaStyleProperty('caretColor', 'black');
         // console.log( `set cursor: будет поставлен в позицию ${ selectionIndex}` );
-        textarea.selectionStart = textarea.selectionEnd = selectionIndex;
+        methodsUI.setTextareaSelectionStart(selectionIndex);
+        methodsUI.setTextareaSelectionEnd(selectionIndex);
       });
     }
 
-    function addSymbol(textarea, text) {
-      console.log(`таймерID ${timeoutIdForAddSymbol}`);
+    function writeKeyboardParametersToLocalStorage() {
+      localStorage.setItem('language', language);
+      localStorage.setItem('register', register);
+      localStorage.setItem('shiftState', shiftState);
+      localStorage.setItem('shiftButton', shiftButton);
+      localStorage.setItem('allText', allText);
+      localStorage.setItem('textAreaWidth', textAreaWidth);
+      localStorage.setItem('textAreaHeight', textAreaHeight);
+    }
+
+    function addSymbol(text) {
+      // console.log(`таймерID ${timeoutIdForAddSymbol}`);
 
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === null) {
-          selectionIndex = textarea.selectionStart;
+          selectionIndex = methodsUI.getTextareaSelectionStart();
         }
 
-        const tail = array.splice(selectionIndex, array.length);
-        array = array.concat(text, tail);
+        // const tail = array.splice(selectionIndex, array.length);
+        array = array.concat(text, array.splice(selectionIndex, array.length));
 
-        console.log(`array___${JSON.stringify(array)}`);
+        // console.log(`array___${JSON.stringify(array)}`);
 
-        ++selectionIndex;
-        setCursor(textarea);
+        selectionIndex += 1;
+        setCursor();
 
-        textarea.innerHTML = array.join('');
+        methodsUI.changeTextareaInnerHTML(array.join(''));
 
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
             const tail = array.splice(selectionIndex, array.length);
             array = array.concat(text, tail);
             console.log(`array___${JSON.stringify(array)}`);
-            setCursor(textarea);
-            ++selectionIndex;
-            textarea.innerHTML = array.join('');
+            setCursor();
+            selectionIndex += 1;
+            methodsUI.changeTextareaInnerHTML(array.join(''));
           }, 50);
         }, 600);
-      } else {
-
       }
     }
 
-    function deleteSymbol(textarea) {
+    function deleteSymbol() {
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === array.length) return;
 
         array.splice(selectionIndex, 1);
         console.log(`array___${JSON.stringify(array)}`);
-        setCursor(textarea);
+        setCursor();
 
-        textarea.innerHTML = array.join('');
+        methodsUI.changeTextareaInnerHTML(array.join(''));
 
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
             if (selectionIndex === array.length) return;
             array.splice(selectionIndex, 1);
             console.log(`array___${JSON.stringify(array)}`);
-            setCursor(textarea);
-            textarea.innerHTML = array.join('');
+            setCursor();
+            methodsUI.changeTextareaInnerHTML(array.join(''));
           }, 30);
         }, 600);
-      } else {
-
       }
     }
 
-    function backspaceSymbol(textarea) {
+    function backspaceSymbol() {
       console.log(`таймерID ${timeoutIdForAddSymbol}`);
 
       if (timeoutIdForAddSymbol === undefined) {
         switch (selectionIndex) {
           case null:
-            selectionIndex = textarea.selectionStart;
+            selectionIndex = methodsUI.getTextareaSelectionStart();
             break;
           case 0:
             return;
@@ -168,8 +171,8 @@ function createKeyboard() {
         const allTextArr = allText.split('');
         allTextArr.splice(selectionIndex - 1, 1);
         allText = allTextArr.join('');
-        textarea.innerHTML = allText;
-        --selectionIndex;
+        // textarea.innerHTML = allText;
+        selectionIndex -= 1;
         console.log(`Индекс${selectionIndex}`);
         if (selectionIndex <= 0) {
           console.log(`backspaceSymbol достигнуто начало Индекс${selectionIndex}`);
@@ -193,17 +196,15 @@ function createKeyboard() {
               return;
             }
             console.log(`main.js запущен setInterval текущее index${selectionIndex}`);
-            const allTextArr = allText.split('');
-            allTextArr.splice(selectionIndex - 1, 1);
-            setCursor(textarea);
-            selectionIndex--;
+            const allTextArray = allText.split('');
+            allTextArray.splice(selectionIndex - 1, 1);
+            // setCursor(textarea);
+            selectionIndex -= 1;
             allText = allTextArr.join('');
-            textarea.innerHTML = allText;
+            // textarea.innerHTML = allText;
             console.log(`backspace 1 символ__alltext ${allText}`);
           }, 100);
         }, 600);
-      } else {
-
       }
     }
 
@@ -214,12 +215,16 @@ function createKeyboard() {
         language = 'rus';
       }
       writeKeyboardParametersToLocalStorage();
-      initiatorOfReload;
+      initiatorOfReload = 'keyboard';
       document.location.reload();
     }
 
     function changeSymbolRegister() {
-      (register === 'lower') ? register = 'upper' : register = 'lower';
+      if (register === 'lower') {
+        register = 'upper';
+      } else {
+        register = 'lower';
+      }
 
       writeKeyboardParametersToLocalStorage();
       initiatorOfReload = 'keyboard';
@@ -237,16 +242,7 @@ function createKeyboard() {
       if (shiftState === 'shift') {
         return true;
       }
-    }
-
-    function writeKeyboardParametersToLocalStorage() {
-      localStorage.setItem('language', language);
-      localStorage.setItem('register', register);
-      localStorage.setItem('shiftState', shiftState);
-      localStorage.setItem('shiftButton', shiftButton);
-      localStorage.setItem('allText', allText);
-      localStorage.setItem('textAreaWidth', textAreaWidth);
-      localStorage.setItem('textAreaHeight', textAreaHeight);
+      return false;
     }
 
     function addAnimationWhenDownMouseButton(event) {
@@ -299,16 +295,16 @@ function createKeyboard() {
       }
     }
 
-    function methodsForControlKeys(eventCode, textarea) {
+    function methodsForControlKeys(eventCode) {
       switch (eventCode) {
         case 'Delete':
-          deleteSymbol(textarea);
+          deleteSymbol();
           break;
         case 'Space':
-          addSymbol(textarea, dict.Space);
+          addSymbol(dict.Space);
           break;
         case 'Backspace':
-          backspaceSymbol(textarea);
+          // backspaceSymbol(textarea);
           break;
         case 'CapsLock':
           changeSymbolRegister();
@@ -318,8 +314,7 @@ function createKeyboard() {
           activateShift(eventCode);
           break;
         case 'ShiftRight':
-          if (holdShift()) return;
-          activateShift(eventCode);
+          if (!holdShift()) activateShift(eventCode);
           break;
         case 'ControlLeft':
           ctrl = true;
@@ -338,7 +333,7 @@ function createKeyboard() {
           }
           break;
         case 'Enter':
-          addSymbol(textarea, '\n');
+          addSymbol('\n');
           break;
         case 'Tab':
           // addSymbol( textarea, `&nbsp&nbsp&nbsp&nbsp` );
@@ -347,30 +342,27 @@ function createKeyboard() {
       }
     }
 
-    function addSymbolToTextareaByKeyboard(eventCode, textarea) {
-      const regexp = new RegExp(/([\w]{1,10})$/);
-
+    function addSymbolToTextareaByKeyboard(eventCode) {
       if (!checkIsControlButton(eventCode)) {
-        const match = eventCode.match(regexp);
-        console.log(`совпадение класса ${match[1]}__словарь${dict[match[1]]}`);
-
-        addSymbol(textarea, dict[match[1]]);
+        const match = eventCode.match(/([\w]{1,10})$/);
+        // console.log(`совпадение класса ${match[1]}__словарь${dict[match[1]]}`);
+        addSymbol(dict[match[1]]);
       }
     }
 
     function addClassForAnimation(event, buttonsCollection) {
-      for (const button of buttonsCollection) {
-        if (button.classList.contains(`key_${event}`)) {
-          button.classList.add('animation');
+      for (let i = 0; i < buttonsCollection.length; i += 1) {
+        if (buttonsCollection[i].classList.contains(`key_${event}`)) {
+          buttonsCollection[i].classList.add('animation');
         }
       }
     }
 
     function removeClassForAnimation(eventCode, buttonsCollection) {
       if (eventCode !== 'CapsLock') {
-        for (const button of buttonsCollection) {
-          if (button.classList.contains(`key_${eventCode}`)) {
-            button.classList.remove('animation');
+        for (let i = 0; i < buttonsCollection.length; i += 1) {
+          if (buttonsCollection[i].classList.contains(`key_${eventCode}`)) {
+            buttonsCollection[i].classList.remove('animation');
           }
         }
 
@@ -400,12 +392,11 @@ function createKeyboard() {
       });
     }
 
-    function hangEventListenersForMouseAlpahumericButton(elem, callback, textarea, symbol) {
+    function hangEventListenersForMouseAlpahumericButton(elem, callback, symbol) {
       elem.addEventListener('mousedown', (event) => {
-        // preventSimultaneousPressing();
         event.preventDefault();
-        setCursor(textarea);
-        callback(textarea, symbol);
+        setCursor();
+        callback(symbol);
         addAnimationWhenDownMouseButton(event.currentTarget);
       });
 
@@ -418,32 +409,17 @@ function createKeyboard() {
       });
     }
 
-    function methodForAlphanumericButton(textarea, elem, symbol) {
-      hangEventListenersForMouseAlpahumericButton(elem, addSymbol, textarea, symbol);
+    function methodForAlphanumericButton(elem, symbol) {
+      hangEventListenersForMouseAlpahumericButton(elem, addSymbol, symbol);
     }
 
-    function methodForBackspace(textarea, elem) {
-      hangEventListenersForMouseAlpahumericButton(elem, backspaceSymbol, textarea);
+    function methodForBackspace(elem) {
+      hangEventListenersForMouseAlpahumericButton(elem, backspaceSymbol);
     }
 
-    function methodForDelete(textarea, elem) {
-      hangEventListenersForMouseAlpahumericButton(elem, deleteSymbol, textarea);
+    function methodForDelete(elem) {
+      hangEventListenersForMouseAlpahumericButton(elem, deleteSymbol);
     }
-
-    // function hangEventListenersForMouseControlButton( elem, callback ){
-    //     elem.addEventListener( "mousedown", ( event ) => {
-    //         callback();
-    //         addAnimationWhenDownMouseButton( event.currentTarget );
-    //     } );
-
-    //     elem.addEventListener( "mouseup", () => {
-    //         removeAnimationWhenUpMouseButton( event.currentTarget );
-    //     } );
-
-    //     elem.addEventListener( "mouseout", () => {
-    //        removeAnimationWhenUpMouseButton( event.currentTarget );
-    //     } );
-    // }
 
     function setSelectionIndex(value) {
       selectionIndex = value;
@@ -463,7 +439,6 @@ function createKeyboard() {
       methodForDelete,
       methodForCapsLock,
       setSelectionIndex,
-      changeFlag,
     };
   }
 

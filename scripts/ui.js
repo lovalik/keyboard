@@ -39,20 +39,20 @@ function createUI({
   const firstRowThirteenthButton = keyboard.querySelector('.key_Equal');
   const firstRowButtonBackspace = keyboard.querySelector('.key_Backspace');
 
-  methods.methodForAlphanumericButton(textarea, firstRowFirstButton, dict.Backquote);
-  methods.methodForAlphanumericButton(textarea, firstRowSecondButton, dict.Digit1);
-  methods.methodForAlphanumericButton(textarea, firstRowThirdButton, dict.Digit2);
-  methods.methodForAlphanumericButton(textarea, firstRowForthThirdButton, dict.Digit3);
-  methods.methodForAlphanumericButton(textarea, firstRowFifthButton, dict.Digit4);
-  methods.methodForAlphanumericButton(textarea, firstRowSixButton, dict.Digit5);
-  methods.methodForAlphanumericButton(textarea, firstRowSeventhButton, dict.Digit6);
-  methods.methodForAlphanumericButton(textarea, firstRowEighthButton, dict.Digit7);
-  methods.methodForAlphanumericButton(textarea, firstRowNinthButton, dict.Digit8);
-  methods.methodForAlphanumericButton(textarea, firstRowTenthButton, dict.Digit9);
-  methods.methodForAlphanumericButton(textarea, firstRowEleventhButton, dict.Digit0);
-  methods.methodForAlphanumericButton(textarea, firstRowTwelfthButton, dict.Minus);
-  methods.methodForAlphanumericButton(textarea, firstRowThirteenthButton, dict.Equal);
-  methods.methodForBackspace(textarea, firstRowButtonBackspace);
+  methods.methodForAlphanumericButton(firstRowFirstButton, dict.backquote);
+  methods.methodForAlphanumericButton(firstRowSecondButton, dict.digit1);
+  methods.methodForAlphanumericButton(firstRowThirdButton, dict.digit2);
+  methods.methodForAlphanumericButton(firstRowForthThirdButton, dict.digit3);
+  methods.methodForAlphanumericButton(firstRowFifthButton, dict.digit4);
+  methods.methodForAlphanumericButton(firstRowSixButton, dict.digit5);
+  methods.methodForAlphanumericButton(firstRowSeventhButton, dict.digit6);
+  methods.methodForAlphanumericButton(firstRowEighthButton, dict.digit7);
+  methods.methodForAlphanumericButton(firstRowNinthButton, dict.digit8);
+  methods.methodForAlphanumericButton(firstRowTenthButton, dict.digit9);
+  methods.methodForAlphanumericButton(firstRowEleventhButton, dict.digit0);
+  methods.methodForAlphanumericButton(firstRowTwelfthButton, dict.minus);
+  methods.methodForAlphanumericButton(firstRowThirteenthButton, dict.equal);
+  methods.methodForBackspace(firstRowButtonBackspace);
 
   // ВТОРОЙ РЯД КЛАВИШ
   //   const secondRowButtonTab = keyboard.querySelector('.key_Tab');
@@ -72,20 +72,20 @@ function createUI({
   const secondRowButtonDelete = keyboard.querySelector('.key_Delete');
 
   // methods.changeSymbolRegister(RowButtonTab, '    ' );
-  methods.methodForAlphanumericButton(textarea, secondRowFirstButton, dict.KeyQ);
-  methods.methodForAlphanumericButton(textarea, secondRowSecondButton, dict.KeyW);
-  methods.methodForAlphanumericButton(textarea, secondRowThirdButton, dict.KeyE);
-  methods.methodForAlphanumericButton(textarea, secondRowForthButton, dict.KeyR);
-  methods.methodForAlphanumericButton(textarea, secondRowFifthButton, dict.KeyT);
-  methods.methodForAlphanumericButton(textarea, secondRowSixButton, dict.KeyY);
-  methods.methodForAlphanumericButton(textarea, secondRowSeventhButton, dict.KeyU);
-  methods.methodForAlphanumericButton(textarea, secondRowEighthButton, dict.KeyI);
-  methods.methodForAlphanumericButton(textarea, secondRowNinthButton, dict.KeyO);
-  methods.methodForAlphanumericButton(textarea, secondRowTenthButton, dict.KeyP);
-  methods.methodForAlphanumericButton(textarea, secondRowEleventhButton, dict.BracketRight);
-  methods.methodForAlphanumericButton(textarea, secondRowTwelfthButton, dict.BracketLeft);
-  methods.methodForAlphanumericButton(textarea, secondRowThirteenthButton, dict.Backslash);
-  methods.methodForDelete(textarea, secondRowButtonDelete);
+  methods.methodForAlphanumericButton(secondRowFirstButton, dict.keyQ);
+  methods.methodForAlphanumericButton(secondRowSecondButton, dict.keyW);
+  methods.methodForAlphanumericButton(secondRowThirdButton, dict.keyE);
+  methods.methodForAlphanumericButton(secondRowForthButton, dict.keyR);
+  methods.methodForAlphanumericButton(secondRowFifthButton, dict.keyT);
+  methods.methodForAlphanumericButton(secondRowSixButton, dict.keyY);
+  methods.methodForAlphanumericButton(secondRowSeventhButton, dict.keyU);
+  methods.methodForAlphanumericButton(secondRowEighthButton, dict.keyI);
+  methods.methodForAlphanumericButton(secondRowNinthButton, dict.keyO);
+  methods.methodForAlphanumericButton(secondRowTenthButton, dict.keyP);
+  methods.methodForAlphanumericButton(secondRowEleventhButton, dict.bracketRight);
+  methods.methodForAlphanumericButton(secondRowTwelfthButton, dict.bracketLeft);
+  methods.methodForAlphanumericButton(secondRowThirteenthButton, dict.backslash);
+  methods.methodForDelete(secondRowButtonDelete);
 
   // methods.methodForAlphanumericButton( secondRowButtonDelete, dict[ 'button_delete' ] );
 
@@ -105,18 +105,18 @@ function createUI({
   const thirdRowButtonEnter = keyboard.querySelector('.key_Enter');
 
   methods.methodForCapsLock(thirdRowButtonCapsLock);
-  methods.methodForAlphanumericButton(textarea, thirdRowFirstButton, dict.KeyA);
-  methods.methodForAlphanumericButton(textarea, thirdRowSecondButton, dict.KeyS);
-  methods.methodForAlphanumericButton(textarea, thirdRowThirdButton, dict.KeyD);
-  methods.methodForAlphanumericButton(textarea, thirdRowForthThirdButton, dict.KeyF);
-  methods.methodForAlphanumericButton(textarea, thirdRowFifthButton, dict.KeyG);
-  methods.methodForAlphanumericButton(textarea, thirdRowSixButton, dict.KeyH);
-  methods.methodForAlphanumericButton(textarea, thirdRowSeventhButton, dict.KeyJ);
-  methods.methodForAlphanumericButton(textarea, thirdRowEighthButton, dict.KeyK);
-  methods.methodForAlphanumericButton(textarea, thirdRowNinthButton, dict.KeyL);
-  methods.methodForAlphanumericButton(textarea, thirdRowTenthButton, dict.Semicolon);
-  methods.methodForAlphanumericButton(textarea, thirdRowEleventhButton, dict.Quote);
-  methods.methodForAlphanumericButton(textarea, thirdRowButtonEnter, '\n');
+  methods.methodForAlphanumericButton(thirdRowFirstButton, dict.keyA);
+  methods.methodForAlphanumericButton(thirdRowSecondButton, dict.keyS);
+  methods.methodForAlphanumericButton(thirdRowThirdButton, dict.keyD);
+  methods.methodForAlphanumericButton(thirdRowForthThirdButton, dict.keyF);
+  methods.methodForAlphanumericButton(thirdRowFifthButton, dict.keyG);
+  methods.methodForAlphanumericButton(thirdRowSixButton, dict.keyH);
+  methods.methodForAlphanumericButton(thirdRowSeventhButton, dict.keyJ);
+  methods.methodForAlphanumericButton(thirdRowEighthButton, dict.keyK);
+  methods.methodForAlphanumericButton(thirdRowNinthButton, dict.keyL);
+  methods.methodForAlphanumericButton(thirdRowTenthButton, dict.semicolon);
+  methods.methodForAlphanumericButton(thirdRowEleventhButton, dict.quote);
+  methods.methodForAlphanumericButton(thirdRowButtonEnter, '\n');
 
   // ЧЕТВЕРТЫЙ РЯД КЛАВИШ
   const forthRowButtonShiftLeft = keyboard.querySelector('.key_ShiftLeft');
@@ -133,19 +133,19 @@ function createUI({
   const forthRowArrowUp = keyboard.querySelector('.key_ArrowUp');
   const forthRowButtonShiftRight = keyboard.querySelector('.key_ShiftRight');
 
-  methods.methodForAlphanumericButton(textarea, forthRowButtonShiftLeft);
-  methods.methodForAlphanumericButton(textarea, forthRowFirstButton, dict.KeyZ);
-  methods.methodForAlphanumericButton(textarea, forthRowSecondButton, dict.KeyX);
-  methods.methodForAlphanumericButton(textarea, forthRowThirdButton, dict.KeyC);
-  methods.methodForAlphanumericButton(textarea, forthRowForthButton, dict.KeyV);
-  methods.methodForAlphanumericButton(textarea, forthRowFifthButton, dict.KeyB);
-  methods.methodForAlphanumericButton(textarea, forthRowSixButton, dict.KeyN);
-  methods.methodForAlphanumericButton(textarea, forthRowSeventhButton, dict.KeyM);
-  methods.methodForAlphanumericButton(textarea, forthRowEighthButton, dict.Comma);
-  methods.methodForAlphanumericButton(textarea, forthRowNinthButton, dict.Period);
-  methods.methodForAlphanumericButton(textarea, forthRowTenthButton, dict.Slash);
-  methods.methodForAlphanumericButton(textarea, forthRowArrowUp, dict.ArrowUp);
-  methods.methodForAlphanumericButton(textarea, forthRowButtonShiftRight);
+  methods.methodForAlphanumericButton(forthRowButtonShiftLeft);
+  methods.methodForAlphanumericButton(forthRowFirstButton, dict.keyZ);
+  methods.methodForAlphanumericButton(forthRowSecondButton, dict.keyX);
+  methods.methodForAlphanumericButton(forthRowThirdButton, dict.keyC);
+  methods.methodForAlphanumericButton(forthRowForthButton, dict.keyV);
+  methods.methodForAlphanumericButton(forthRowFifthButton, dict.keyB);
+  methods.methodForAlphanumericButton(forthRowSixButton, dict.keyN);
+  methods.methodForAlphanumericButton(forthRowSeventhButton, dict.keyM);
+  methods.methodForAlphanumericButton(forthRowEighthButton, dict.comma);
+  methods.methodForAlphanumericButton(forthRowNinthButton, dict.period);
+  methods.methodForAlphanumericButton(forthRowTenthButton, dict.slash);
+  methods.methodForAlphanumericButton(forthRowArrowUp, dict.arrowUp);
+  methods.methodForAlphanumericButton(forthRowButtonShiftRight);
 
   // ПЯТЫЙ РЯД КЛАВИШ
   const fifthRowButtonCtrl = keyboard.querySelector('.key_ControlLeft');
@@ -160,20 +160,22 @@ function createUI({
 
   const flag = keyboard.querySelector('.message_flag');
 
-  methods.methodForAlphanumericButton(textarea, fifthRowButtonCtrl);
-  methods.methodForAlphanumericButton(textarea, fifthRowButtonWin);
-  methods.methodForAlphanumericButton(textarea, fifthRowAltLeft);
-  methods.methodForAlphanumericButton(textarea, fifthRowSpace, dict.Space);
-  methods.methodForAlphanumericButton(textarea, fifthRowAltRight);
-  methods.methodForAlphanumericButton(textarea, fifthRowArrowLeft, dict.ArrowLeft);
-  methods.methodForAlphanumericButton(textarea, fifthRowArrowDown, dict.ArrowDown);
-  methods.methodForAlphanumericButton(textarea, fifthRowArrowRight, dict.ArrowRight);
+  methods.methodForAlphanumericButton(fifthRowButtonCtrl);
+  methods.methodForAlphanumericButton(fifthRowButtonWin);
+  methods.methodForAlphanumericButton(fifthRowAltLeft);
+  methods.methodForAlphanumericButton(fifthRowSpace, dict.space);
+  methods.methodForAlphanumericButton(fifthRowAltRight);
+  methods.methodForAlphanumericButton(fifthRowArrowLeft, dict.arrowLeft);
+  methods.methodForAlphanumericButton(fifthRowArrowDown, dict.arrowDown);
+  methods.methodForAlphanumericButton(fifthRowArrowRight, dict.arrowRight);
 
   methods.highlightButtonShiftLeft(forthRowButtonShiftLeft);
   methods.highlightButtonShiftRight(forthRowButtonShiftRight);
   methods.highlightButtonCapsLock(thirdRowButtonCapsLock);
 
-  methods.changeFlag(fifthRowFlag, flag);
+  fifthRowFlag.style.backgroundImage = dict.flag;
+  flag.disabled = true;
+  flag.style.backgroundImage = dict.contrFlag;
 
   document.addEventListener('keydown', (event) => {
     event.preventDefault();
@@ -195,6 +197,39 @@ function createUI({
     console.log(`ui.js позиция курсора ${textarea.selectionStart}`);
     methods.setSelectionIndex(textarea.selectionStart);
   });
+
+  function changeTextareaStyleProperty(property, value) {
+    textarea.style[property] = value;
+  }
+
+  function focusTextarea() {
+    textarea.focus();
+  }
+
+  function changeTextareaInnerHTML(value) {
+    textarea.innerHTML = value;
+  }
+
+  function setTextareaSelectionStart(value) {
+    textarea.selectionStart = value;
+  }
+
+  function setTextareaSelectionEnd(value) {
+    textarea.selectionEnd = value;
+  }
+
+  function getTextareaSelectionStart() {
+    return textarea.selectionStart;
+  }
+
+  return {
+    changeTextareaStyleProperty,
+    focusTextarea,
+    changeTextareaInnerHTML,
+    setTextareaSelectionStart,
+    setTextareaSelectionEnd,
+    getTextareaSelectionStart,
+  };
 }
 
 export default createUI;
