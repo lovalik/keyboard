@@ -14,16 +14,16 @@ function createKeyboard() {
   let shiftState = localStorage.getItem('shiftState');
   let shiftButton = localStorage.getItem('shiftButton');
   let allText = localStorage.getItem('allText');
+  const arrayOfAllText = localStorage.getItem('array');
+  let selectionIndex = localStorage.getItem('selectionIndex');
   let textAreaWidth = localStorage.getItem('textAreaWidth');
   let textAreaHeight = localStorage.getItem('textAreaHeight');
   let initiatorOfReload = null;
   let ctrl = false;
-  let selectionIndex = null;
-  // let trackPressButton = undefined;
-  let array = [];
+  let array;
 
-  console.log(`память: ${language}___${register}___${shiftState}___${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
-
+  console.log(`память: ${language}___${register}___${shiftState}__${shiftButton}__${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
+  console.log(`память: ${array}___${selectionIndex}`);
   if (language === null) {
     language = 'eng';
   }
@@ -36,8 +36,13 @@ function createKeyboard() {
   const dict = dictionary[language][register][shiftState];
   // console.log(JSON.stringify(dict))
 
-  if (allText === null) {
+  if (allText === null && arrayOfAllText === null) {
     allText = '';
+    array = [];
+    selectionIndex = 0;
+  } else {
+    array = arrayOfAllText.split(',');
+    selectionIndex = Number(selectionIndex);
   }
 
   if (textAreaWidth === null && textAreaHeight === null) {
@@ -45,7 +50,8 @@ function createKeyboard() {
     textAreaHeight = 100;
   }
 
-  console.log(`после: ${language}___${register}___${shiftState}___${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
+  console.log(`после перезагрузки: ${language}___${register}___${shiftState}___${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
+  console.log(`после перезагрузки: ${array}___selind${selectionIndex}`);
 
   const observer = new ResizeObserver((entries) => {
     // eslint-disable-next-line no-restricted-syntax
@@ -97,6 +103,8 @@ function createKeyboard() {
       localStorage.setItem('shiftState', shiftState);
       localStorage.setItem('shiftButton', shiftButton);
       localStorage.setItem('allText', allText);
+      localStorage.setItem('array', array);
+      localStorage.setItem('selectionIndex', selectionIndex);
       localStorage.setItem('textAreaWidth', textAreaWidth);
       localStorage.setItem('textAreaHeight', textAreaHeight);
     }
@@ -106,26 +114,27 @@ function createKeyboard() {
 
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === null) {
+          alert(2);
           selectionIndex = methodsUI.getTextareaSelectionStart();
         }
-
+        console.log(`++++++++++++++${selectionIndex}`);
         // const tail = array.splice(selectionIndex, array.length);
         array = array.concat(text, array.splice(selectionIndex, array.length));
 
-        // console.log(`array___${JSON.stringify(array)}`);
+        console.log(`array___${JSON.stringify(array)}`);
 
         selectionIndex += 1;
         setCursor();
-
+        allText = array.join('');
         methodsUI.changeTextareaInnerHTML(array.join(''));
 
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
-            const tail = array.splice(selectionIndex, array.length);
-            array = array.concat(text, tail);
+            array = array.concat(text, array.splice(selectionIndex, array.length));
             console.log(`array___${JSON.stringify(array)}`);
             setCursor();
             selectionIndex += 1;
+            allText = array.join('');
             methodsUI.changeTextareaInnerHTML(array.join(''));
           }, 50);
         }, 600);
@@ -139,7 +148,7 @@ function createKeyboard() {
         array.splice(selectionIndex, 1);
         console.log(`array___${JSON.stringify(array)}`);
         setCursor();
-
+        allText = array.join('');
         methodsUI.changeTextareaInnerHTML(array.join(''));
 
         timeoutIdForAddSymbol = window.setTimeout(() => {
@@ -148,6 +157,7 @@ function createKeyboard() {
             array.splice(selectionIndex, 1);
             console.log(`array___${JSON.stringify(array)}`);
             setCursor();
+            allText = array.join('');
             methodsUI.changeTextareaInnerHTML(array.join(''));
           }, 30);
         }, 600);
@@ -158,57 +168,70 @@ function createKeyboard() {
       console.log(`таймерID ${timeoutIdForAddSymbol}`);
 
       if (timeoutIdForAddSymbol === undefined) {
-        switch (selectionIndex) {
-          case null:
-            selectionIndex = methodsUI.getTextareaSelectionStart();
-            break;
-          case 0:
-            return;
-          default: break;
-        }
-
-        console.log(`main.js текущее index${selectionIndex}`);
-        const allTextArr = allText.split('');
-        allTextArr.splice(selectionIndex - 1, 1);
-        allText = allTextArr.join('');
-        // textarea.innerHTML = allText;
-        selectionIndex -= 1;
-        console.log(`Индекс${selectionIndex}`);
-        if (selectionIndex <= 0) {
-          console.log(`backspaceSymbol достигнуто начало Индекс${selectionIndex}`);
-          clearTimeout(timeoutIdForAddSymbol);
-          clearInterval(intervalIdForAddSymbol);
-          timeoutIdForAddSymbol = undefined;
-          intervalIdForAddSymbol = undefined;
+        if (selectionIndex === 0) {
+          alert(1);
           return;
         }
 
+        array.splice(selectionIndex - 1, 1);
+        console.log(`array___${JSON.stringify(array)}`);
+        selectionIndex -= 1;
+        setCursor();
+        allText = array.join('');
+        methodsUI.changeTextareaInnerHTML(array.join(''));
+
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
-            console.log(`++++++++++++++++++++++++${selectionIndex}`);
-            if (selectionIndex <= 0) {
-              clearTimeout(timeoutIdForAddSymbol);
-              clearInterval(intervalIdForAddSymbol);
-              timeoutIdForAddSymbol = undefined;
-              intervalIdForAddSymbol = undefined;
-              console.log(`отказ, достигнуто начало${timeoutIdForAddSymbol}`);
-              console.log(`отказ, достигнуто начало${intervalIdForAddSymbol}`);
+            if (selectionIndex === 0) {
+              alert(1);
               return;
             }
-            console.log(`main.js запущен setInterval текущее index${selectionIndex}`);
-            const allTextArray = allText.split('');
-            allTextArray.splice(selectionIndex - 1, 1);
-            // setCursor(textarea);
+            array.splice(selectionIndex - 1, 1);
+            console.log(`array___${JSON.stringify(array)}`);
             selectionIndex -= 1;
-            allText = allTextArr.join('');
-            // textarea.innerHTML = allText;
-            console.log(`backspace 1 символ__alltext ${allText}`);
-          }, 100);
+            setCursor();
+            allText = array.join('');
+            methodsUI.changeTextareaInnerHTML(array.join(''));
+          }, 30);
+        }, 600);
+      }
+    }
+
+    function tab() {
+      if (timeoutIdForAddSymbol === undefined) {
+        if (selectionIndex === null) {
+          alert(2);
+          selectionIndex = methodsUI.getTextareaSelectionStart();
+        }
+        console.log(`++++++++++++++${selectionIndex}`);
+        // const tail = array.splice(selectionIndex, array.length);
+        array = array.concat(' ', ' ', ' ', ' ', array.splice(selectionIndex, array.length));
+
+        console.log(`array___${JSON.stringify(array)}`);
+
+        selectionIndex += 4;
+        setCursor();
+        allText = array.join('');
+        methodsUI.changeTextareaInnerHTML(array.join(''));
+
+        timeoutIdForAddSymbol = window.setTimeout(() => {
+          intervalIdForAddSymbol = window.setInterval(() => {
+            array = array.concat(' ', ' ', ' ', ' ', array.splice(selectionIndex, array.length));
+            console.log(`array___${JSON.stringify(array)}`);
+            setCursor();
+            selectionIndex += 4;
+            allText = array.join('');
+            methodsUI.changeTextareaInnerHTML(array.join(''));
+          }, 50);
         }, 600);
       }
     }
 
     function changeLanguage() {
+      if (ctrl !== true) {
+        return;
+      }
+
       if (language === 'rus') {
         language = 'eng';
       } else {
@@ -232,17 +255,21 @@ function createKeyboard() {
     }
 
     function activateShift(eventCode) {
-      shiftState = 'shift';
-      shiftButton = eventCode;
-      writeKeyboardParametersToLocalStorage();
-      document.location.reload();
+      if (shiftState !== 'shift') {
+        shiftState = 'shift';
+        shiftButton = eventCode;
+        writeKeyboardParametersToLocalStorage();
+        document.location.reload();
+      }
     }
 
-    function holdShift() {
-      if (shiftState === 'shift') {
-        return true;
+    function deactivateShift(eventCode) {
+      if (eventCode === 'ShiftLeft' || eventCode === 'ShiftRight') {
+        shiftState = 'noShift';
+        shiftButton = null;
+        writeKeyboardParametersToLocalStorage();
+        document.location.reload();
       }
-      return false;
     }
 
     function addAnimationWhenDownMouseButton(event) {
@@ -304,17 +331,16 @@ function createKeyboard() {
           addSymbol(dict.Space);
           break;
         case 'Backspace':
-          // backspaceSymbol(textarea);
+          backspaceSymbol();
           break;
         case 'CapsLock':
           changeSymbolRegister();
           break;
         case 'ShiftLeft':
-          if (holdShift()) return;
           activateShift(eventCode);
           break;
         case 'ShiftRight':
-          if (!holdShift()) activateShift(eventCode);
+          activateShift(eventCode);
           break;
         case 'ControlLeft':
           ctrl = true;
@@ -323,20 +349,16 @@ function createKeyboard() {
           ctrl = true;
           break;
         case 'AltLeft':
-          if (ctrl === true) {
-            changeLanguage();
-          }
+          changeLanguage();
           break;
         case 'AltRight':
-          if (ctrl === true) {
-            changeLanguage();
-          }
+          changeLanguage();
           break;
         case 'Enter':
           addSymbol('\n');
           break;
         case 'Tab':
-          // addSymbol( textarea, `&nbsp&nbsp&nbsp&nbsp` );
+          tab();
           break;
         default: break;
       }
@@ -374,15 +396,6 @@ function createKeyboard() {
 
       if (eventCode === 'ControlLeft' || eventCode === 'ControlRight') {
         ctrl = false;
-      }
-    }
-
-    function deactivateShift(eventCode) {
-      if (eventCode === 'ShiftLeft' || eventCode === 'ShiftRight') {
-        shiftState = 'noShift';
-        shiftButton = null;
-        writeKeyboardParametersToLocalStorage();
-        document.location.reload();
       }
     }
 
@@ -425,6 +438,18 @@ function createKeyboard() {
       selectionIndex = value;
     }
 
+    function methodForShiftButton(elem, eventCode) {
+      hangEventListenersForMouseAlpahumericButton(elem, activateShift, eventCode);
+
+      elem.addEventListener('mouseup', () => {
+        deactivateShift(eventCode);
+      });
+    }
+
+    function methodForTabButton(elem) {
+      hangEventListenersForMouseAlpahumericButton(elem, tab);
+    }
+
     return {
       addClassForAnimation,
       removeClassForAnimation,
@@ -439,6 +464,8 @@ function createKeyboard() {
       methodForDelete,
       methodForCapsLock,
       setSelectionIndex,
+      methodForShiftButton,
+      methodForTabButton,
     };
   }
 

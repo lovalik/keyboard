@@ -135,31 +135,31 @@ body {
     /* border-radius: 30%; */
 }
 
-.key_Backquote,
-.key_CapsLock,
-.key_Enter,
-.key_Delete,
-.key_ShiftLeft,
-.key_ShiftRight,
-.key_ControlRight,
-.key_ControlLeft {
+.key_backquote,
+.key_capslock,
+.key_enter,
+.key_delete,
+.key_shift-left,
+.key_shift-right,
+.key_control-right,
+.key_control-left {
     flex-grow: 1;
 }
 
-.key_Backspace {
+.key_backspace {
     flex-grow: 5;
 }
 
-.key_Tab {
+.key_tab {
     flex-grow: 1;
     color: rgb(187, 205, 50)
 }
 
-.key_Space {
+.key_space {
     flex-grow: 24;
 }
 
-.key_ArrowUp:after {
+.key_arrow-up:after {
     content: "";
     border-top: solid 5px transparent;
     border-left: solid 10px transparent;
@@ -167,7 +167,7 @@ body {
     border-bottom: solid 15px white;
 }
 
-.key_ArrowLeft:after {
+.key_arrow-left:after {
     margin-right: 10px;
     content: "";
     border-left: solid 5px transparent;
@@ -176,7 +176,7 @@ body {
     border-right: solid 15px white;
 }
 
-.key_ArrowDown:after {
+.key_arrow-down:after {
     margin-top: 10px;
     content: "";
     border-bottom: solid 5px transparent;
@@ -185,7 +185,7 @@ body {
     border-top: solid 15px white;
 }
 
-.key_ArrowRight:after {
+.key_arrow-right:after {
     margin-left: 10px;
     content: "";
     border-right: solid 5px transparent;
@@ -237,7 +237,7 @@ body {
     height: 25px;
     width: auto;
     vertical-align: middle;
-    /* outline: solid 1px red; */
+    /* outline: solid 1px rgb(25, 0, 255); */
 }
 
 .message_change-language > span {
@@ -246,14 +246,15 @@ body {
 
 .message_os {
     font-weight: bold;
+    /* outline: solid 1px red; */
 }
 
 .message_flag {
     position: relative;
     /* top: 7px; */
-    width: 40px;
-    height: 25px;
-    margin: 0 0 0 50px;
+    width: 25px;
+    height: 15px;
+    margin: 0 0 0 40px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -262,35 +263,36 @@ body {
 
 .message_flag:before {
     position: absolute;
-    top: 6px;
-    left: -20px;
+    top: 2px;
+    left: -15px;
     content: "";
-    border-top: solid 6px transparent;
-    border-bottom: solid 6px transparent;
-    border-left: solid 15px black;
+    border-top: solid 5px transparent;
+    border-bottom: solid 5px transparent;
+    border-left: solid 10px black;
     border-right: solid 1px transparent;
 }
 
 .message_flag:after {
     position: absolute;
-    top: 6px;
-    left: -38px;
+    top: 2px;
+    left: -27px;
     content: "";
-    border-top: solid 6px transparent;
-    border-bottom: solid 6px transparent;
-    border-left: solid 15px black;
+    border-top: solid 5px transparent;
+    border-bottom: solid 5px transparent;
+    border-left: solid 10px black;
     border-right: solid 1px transparent;
 }
 
-.message_os-flag {
+.message_windows10-logo {
     position: relative;
     top: 7px;
-    width: 150px;
-    height: 25px;
+    width: 130px;
+    height: 20px;
     background-image: url("../assets/images/windows10-logo.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
+    /* outline: solid 1px red; */
 }
 
 
