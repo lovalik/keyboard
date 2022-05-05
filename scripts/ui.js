@@ -1,7 +1,8 @@
+// eslint-disable-next-line import/extensions
 import createTemplate from './template.js';
 
 function createUI({
-  container,
+  appendKeyboard,
   dict,
   methodsForButtons,
   allText,
@@ -9,8 +10,9 @@ function createUI({
   textAreaHeight,
   observer,
 }) {
-  container.innerHTML = createTemplate(dict);
-  const keyboard = container.querySelector('.keyboard');
+  appendKeyboard(createTemplate(dict));
+
+  const keyboard = document.querySelector('.keyboard');
   const textarea = keyboard.querySelector('.screen_textarea');
   textarea.innerHTML = allText;
   textarea.style.width = `${textAreaWidth}px`;
@@ -53,7 +55,7 @@ function createUI({
   methods.methodForBackspace(textarea, firstRowButtonBackspace);
 
   // ВТОРОЙ РЯД КЛАВИШ
-  const secondRowButtonTab = keyboard.querySelector('.key_Tab');
+  //   const secondRowButtonTab = keyboard.querySelector('.key_Tab');
   const secondRowFirstButton = keyboard.querySelector('.key_KeyQ');
   const secondRowSecondButton = keyboard.querySelector('.key_KeyW');
   const secondRowThirdButton = keyboard.querySelector('.key_KeyE');

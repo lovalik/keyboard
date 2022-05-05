@@ -1,10 +1,12 @@
+// eslint-disable-next-line import/extensions
 import createUI from './ui.js';
+// eslint-disable-next-line import/extensions
 import dictionary from './dictionary.js';
 
 function createKeyboard() {
-  const container = document.createElement('div');
-  container.className = 'container';
-  document.body.append(container);
+  const keyboardContainer = document.createElement('div');
+  keyboardContainer.className = 'container';
+  document.body.append(keyboardContainer);
   // localStorage.clear()
 
   let language = localStorage.getItem('language');
@@ -55,8 +57,12 @@ function createKeyboard() {
     }
   });
 
+  function appendKeyboard(keyboard) {
+    keyboardContainer.innerHTML = keyboard;
+  }
+
   createUI({
-    container,
+    appendKeyboard,
     dict,
     methodsForButtons,
     register,
