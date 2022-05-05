@@ -1,0 +1,296 @@
+@import url('./fonts.css');
+@import url('./animation.css');
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Roboto", "Arial", sans-serif;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 950px;
+}
+
+.keyboard-screen_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.message_change-language-buttons,
+.message_windows {
+    margin-top: 15px;
+}
+
+* {
+    /* outline: solid 1px red; */
+}
+
+.keyboard__screen {
+    width: 100%;
+}
+.screen_textarea {
+    width: 1250px;
+    height: 200px;
+    font-family: "Roboto", "Arial", sans-serif;
+}
+
+.keyboard-buttons_wrapper {
+    position: relative;
+    width: 950px;
+    display: flex;
+    justify-content: center;
+}
+
+.keyboard-buttons_wrapper *::selection {
+    background-color: transparent;
+}
+
+.keyboard__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-self: center;
+    row-gap: 5px;
+    width: 835px;
+    padding: 10px;
+    border: solid 3px black;
+    background-color: rgb(202, 202, 202);
+    border-radius: 3px;
+}
+
+.first-row,
+.second-row,
+.third-row,
+.forth-row,
+.fifth-row {
+    display: flex;
+    /* justify-content: space-between; */
+    column-gap: 4px;
+}
+
+.first-row > div,
+.second-row > div,
+.third-row > div,
+.forth-row > div,
+.fifth-row > div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    color: white;
+    background-color: black;
+    border-radius: 6px;
+}
+
+.first-row > div:before,
+.second-row > div:before,
+.third-row > div:before,
+.forth-row > div:before,
+.fifth-row > div:before {
+    /* position: absolute;
+    z-index: 1000;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    box-sizing: border-box;
+    content: "";
+    border: solid 2px rgb(99, 99, 99);
+    border-radius: 4px; */
+}
+
+.first-row > div:hover,
+.second-row > div:hover,
+.third-row > div:hover,
+.forth-row > div:hover,
+.fifth-row > div:hover {
+    cursor: pointer;
+    background-color: yellow;
+    color: black;
+    text-shadow: 1px 1px 1px;
+    font-size: 18px;
+}
+
+.first-row > div:active,
+.second-row > div:active,
+.third-row > div:active,
+.forth-row > div:active,
+.fifth-row > div:active {
+    /* align-self: center;
+    width: 44px;
+    height: 44px;
+    margin: 3px; */
+    /* border-radius: 30%; */
+}
+
+.key_Backquote,
+.key_CapsLock,
+.key_Enter,
+.key_Delete,
+.key_ShiftLeft,
+.key_ShiftRight,
+.key_ControlRight,
+.key_ControlLeft {
+    flex-grow: 1;
+}
+
+.key_Backspace {
+    flex-grow: 5;
+}
+
+.key_Tab {
+    flex-grow: 1;
+    color: rgb(187, 205, 50)
+}
+
+.key_Space {
+    flex-grow: 24;
+}
+
+.key_ArrowUp:after {
+    content: "";
+    border-top: solid 5px transparent;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+    border-bottom: solid 15px white;
+}
+
+.key_ArrowLeft:after {
+    margin-right: 10px;
+    content: "";
+    border-left: solid 5px transparent;
+    border-top: solid 10px transparent;
+    border-bottom: solid 10px transparent;
+    border-right: solid 15px white;
+}
+
+.key_ArrowDown:after {
+    margin-top: 10px;
+    content: "";
+    border-bottom: solid 5px transparent;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+    border-top: solid 15px white;
+}
+
+.key_ArrowRight:after {
+    margin-left: 10px;
+    content: "";
+    border-right: solid 5px transparent;
+    border-top: solid 10px transparent;
+    border-bottom: solid 10px transparent;
+    border-left: solid 15px white;
+}
+
+.fifth-row > .flag {
+    position: absolute;
+    top: 0px;
+    left: -3px;
+    /* width: 30px; */
+    height: 25px;
+    width: 40px;
+    border: solid 1px black;
+    border-radius: 0%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    /* ba */
+    background-color: transparent;
+}
+
+.fifth-row > .flag:hover{
+    cursor: default;
+    background-color: transparent;
+}
+
+.fifth-row > .flag:before {
+    border: none;
+}
+
+.message {
+    position: relative;
+    min-width: 855px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* outline: solid 1px red; */
+}
+
+.message_change-language {
+    position: absolute;
+    top:5px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    width: auto;
+    vertical-align: middle;
+    /* outline: solid 1px red; */
+}
+
+.message_change-language > span {
+    display: inline-block;
+}
+
+.message_os {
+    font-weight: bold;
+}
+
+.message_flag {
+    position: relative;
+    /* top: 7px; */
+    width: 40px;
+    height: 25px;
+    margin: 0 0 0 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    outline: solid 1px rgb(189, 189, 189);
+}
+
+.message_flag:before {
+    position: absolute;
+    top: 6px;
+    left: -20px;
+    content: "";
+    border-top: solid 6px transparent;
+    border-bottom: solid 6px transparent;
+    border-left: solid 15px black;
+    border-right: solid 1px transparent;
+}
+
+.message_flag:after {
+    position: absolute;
+    top: 6px;
+    left: -38px;
+    content: "";
+    border-top: solid 6px transparent;
+    border-bottom: solid 6px transparent;
+    border-left: solid 15px black;
+    border-right: solid 1px transparent;
+}
+
+.message_os-flag {
+    position: relative;
+    top: 7px;
+    width: 150px;
+    height: 25px;
+    background-image: url("../assets/images/windows10-logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+

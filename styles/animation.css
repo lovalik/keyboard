@@ -1,0 +1,46 @@
+.animation {
+    animation-name: press;
+    animation-duration: 50ms;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes press {
+    0%{
+        align-self: center;
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        color: black;
+        background-color: yellow;
+        background-image: radial-gradient(black, black, yellow ) ;
+    }
+    60%{
+        align-self: center;
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        background-color: yellow;
+        background-image: linear-gradient(black, yellow, yellow);
+        color: black;
+    }
+
+    100%{
+        /* justify-content: flex-start; */
+        /* align-items: flex-start; */
+        /* padding-left: 5px;
+        padding-top: 2px; */
+        align-self: center;
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        font-size: 15px;
+        border: solid 1px rgb(0, 0, 0);
+        background-color: yellow;
+        background-image: linear-gradient(yellow);
+        color: black;
+        filter: drop-shadow( 4px 4px 4px);
+        box-shadow: inset 0 0 5px;
+        text-shadow: 1px 1px 1px;
+    }
+}
