@@ -17,7 +17,7 @@ function createKeyboard(){
     let initiatorOfReload = null;
     let ctrl = false;
     let selectionIndex = null;
-    let trackPressButton = undefined;
+    // let trackPressButton = undefined;
     let array = [];
 
     console.log( `память: ${language }___${register }___${shiftState}___${allText}___( ${textAreaWidth }-X-${textAreaHeight} )` );
@@ -56,7 +56,7 @@ function createKeyboard(){
         }
     } )
 
-    const ui = createUI( {
+    createUI( {
         container,
         dict,
         methodsForButtons,
@@ -183,7 +183,7 @@ function createKeyboard(){
                     timeoutIdForAddSymbol = undefined;
                     intervalIdForAddSymbol = undefined;
                     return 
-                };
+                }
 
                 timeoutIdForAddSymbol = window.setTimeout( () => {
                     intervalIdForAddSymbol = window.setInterval( () => {
@@ -196,7 +196,7 @@ function createKeyboard(){
                             console.log(`отказ, достигнуто начало${timeoutIdForAddSymbol}`);
                             console.log(`отказ, достигнуто начало${intervalIdForAddSymbol}`);
                             return 
-                        };
+                        }
                         console.log( `main.js запущен setInterval текущее index${selectionIndex}` );
                         let allTextArr = allText.split("");
                         allTextArr.splice( selectionIndex - 1, 1 );
@@ -344,6 +344,7 @@ function createKeyboard(){
                     break;
                 case "Enter":
                     addSymbol( textarea, "\n" );
+                    break;
                 case "Tab":
                     // addSymbol( textarea, `&nbsp&nbsp&nbsp&nbsp` );
                     break;
@@ -414,7 +415,7 @@ function createKeyboard(){
         }
 
         function methodForCapsLock( elem ){
-            elem.addEventListener( "mousedown", ( event ) => {
+            elem.addEventListener( "mousedown", () => {
                 changeSymbolRegister();
             } );
         }
@@ -437,20 +438,20 @@ function createKeyboard(){
             } );
         }
 
-        function hangEventListenersForMouseControlButton( elem, callback ){
-            elem.addEventListener( "mousedown", ( event ) => {
-                callback();
-                addAnimationWhenDownMouseButton( event.currentTarget );
-            } );
+        // function hangEventListenersForMouseControlButton( elem, callback ){
+        //     elem.addEventListener( "mousedown", ( event ) => {
+        //         callback();
+        //         addAnimationWhenDownMouseButton( event.currentTarget );
+        //     } );
     
-            elem.addEventListener( "mouseup", () => {
-                removeAnimationWhenUpMouseButton( event.currentTarget );
-            } );
+        //     elem.addEventListener( "mouseup", () => {
+        //         removeAnimationWhenUpMouseButton( event.currentTarget );
+        //     } );
     
-            elem.addEventListener( "mouseout", () => {
-               removeAnimationWhenUpMouseButton( event.currentTarget );
-            } );
-        }
+        //     elem.addEventListener( "mouseout", () => {
+        //        removeAnimationWhenUpMouseButton( event.currentTarget );
+        //     } );
+        // }
 
         function setSelectionIndex( value ){
             selectionIndex = value;
@@ -471,7 +472,6 @@ function createKeyboard(){
             methodForCapsLock,
             setSelectionIndex,
             changeFlag
-            // preventSimultaneousPressing
         }
     }
 
