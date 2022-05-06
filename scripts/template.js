@@ -89,6 +89,15 @@ function createTemplate(dictionary) {
                                 </div>
                                 <div class='message_windows10-logo'></div>
                             </div>
+                            <div class="ecmascript6-features">
+                                <p>ECMAscript 6 features:</p>
+                                <ul class="ecmascript6-features_ul">
+                                    <li>использование стрелочных функций в файле-модуле: main.js</li>
+                                    <li>объявление переменных через let и const файлах-модулях: main.js, ui.js</li>
+                                    <li>использование модулей: все файлы папки scripts являются модулями т.е. экспортируются или импортируются в другие модули</li>
+                                    <li>использование классов: в модуле ui.js объявлен class UImethods, методы этого класса используются в main.js</li>
+                                </ul>
+                            </div>
                         </div>`;
 }
 export default createTemplate;

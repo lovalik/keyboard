@@ -295,4 +295,23 @@ body {
     /* outline: solid 1px red; */
 }
 
+.ecmascript6-features {
+  width: 855px;
+  margin-top: 25px;
+  font-size: 14px;
+  /* outline: solid 1px red; */
+}
 
+.ecmascript6-features > p {
+    margin: 0 0 8px; 
+    font-weight: bold;
+}
+
+.ecmascript6-features_ul {
+    margin: 0;
+    padding-left: 20px; 
+}
+
+.ecmascript6-features_ul > li {
+    font-size: 14px;
+}

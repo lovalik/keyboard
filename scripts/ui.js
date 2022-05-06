@@ -180,7 +180,6 @@ function createUI({
   document.addEventListener('keydown', (event) => {
     event.preventDefault();
     console.log(`ui.js-'keydown'__${event.code}`);
-    // methods.preventSimultaneousPressing();
     methods.addClassForAnimation(event.code, allButtons);
     methods.methodsForControlKeys(event.code, textarea);
     methods.addSymbolToTextareaByKeyboard(event.code, textarea);
