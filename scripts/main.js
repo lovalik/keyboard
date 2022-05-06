@@ -23,8 +23,9 @@ function createKeyboard() {
   let ctrl = false;
   let array;
 
-  console.log(`память: ${language}______${shiftState}__${shiftButton}_caps${capslockState}__${capslockButtonWasUp}__${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
-  console.log(`память: ${array}___${selectionIndex}`);
+  // eslint-disable-next-line max-len
+  // console.log(`память: ${language}______${shiftState}__${shiftButton}_caps${capslockState}__${capslockButtonWasUp}__${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
+  // console.log(`память: ${array}___${selectionIndex}`);
   if (language === null) {
     language = 'eng';
   }
@@ -47,12 +48,13 @@ function createKeyboard() {
   }
 
   if (textAreaWidth === null && textAreaHeight === null) {
-    textAreaWidth = 1200;
-    textAreaHeight = 100;
+    textAreaWidth = 1000;
+    textAreaHeight = 300;
   }
 
-  console.log(`после перезагрузки: ${language}_____${shiftState}__caps${capslockState}__${capslockButtonWasUp}____${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
-  console.log(`после перезагрузки: ${array}___selind${selectionIndex}`);
+  // eslint-disable-next-line max-len
+  // console.log(`перезагрузки: ${language}_${shiftState}_caps${capslockState}__${capslockButtonWasUp}_${allText} )`);
+  // console.log(`после перезагрузки: ${array}___selind${selectionIndex}`);
 
   const observer = new ResizeObserver((entries) => {
     // eslint-disable-next-line no-restricted-syntax
@@ -116,14 +118,14 @@ function createKeyboard() {
 
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === null) {
-          console.log('отказ');
+          // console.log('отказ');
           selectionIndex = UImethods.getTextareaSelectionStart();
         }
-        console.log(`++++++++++++++${selectionIndex}`);
+        // console.log(`++++++++++++++${selectionIndex}`);
         // const tail = array.splice(selectionIndex, array.length);
         array = array.concat(text, array.splice(selectionIndex, array.length));
 
-        console.log(`array___${JSON.stringify(array)}`);
+        // console.log(`array___${JSON.stringify(array)}`);
 
         selectionIndex += 1;
         setCursor();
@@ -133,7 +135,7 @@ function createKeyboard() {
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
             array = array.concat(text, array.splice(selectionIndex, array.length));
-            console.log(`array___${JSON.stringify(array)}`);
+            // console.log(`array___${JSON.stringify(array)}`);
             setCursor();
             selectionIndex += 1;
             allText = array.join('');
@@ -148,7 +150,7 @@ function createKeyboard() {
         if (selectionIndex === array.length) return;
 
         array.splice(selectionIndex, 1);
-        console.log(`array___${JSON.stringify(array)}`);
+        // console.log(`array___${JSON.stringify(array)}`);
         setCursor();
         allText = array.join('');
         UImethods.changeTextareaInnerHTML(array.join(''));
@@ -157,7 +159,7 @@ function createKeyboard() {
           intervalIdForAddSymbol = window.setInterval(() => {
             if (selectionIndex === array.length) return;
             array.splice(selectionIndex, 1);
-            console.log(`array___${JSON.stringify(array)}`);
+            // console.log(`array___${JSON.stringify(array)}`);
             setCursor();
             allText = array.join('');
             UImethods.changeTextareaInnerHTML(array.join(''));
@@ -167,16 +169,16 @@ function createKeyboard() {
     }
 
     function backspaceSymbol() {
-      console.log(`таймерID ${timeoutIdForAddSymbol}`);
+      // console.log(`таймерID ${timeoutIdForAddSymbol}`);
 
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === 0) {
-          console.log('отказ');
+          // console.log('отказ');
           return;
         }
 
         array.splice(selectionIndex - 1, 1);
-        console.log(`array___${JSON.stringify(array)}`);
+        // console.log(`array___${JSON.stringify(array)}`);
         selectionIndex -= 1;
         setCursor();
         allText = array.join('');
@@ -185,11 +187,11 @@ function createKeyboard() {
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
             if (selectionIndex === 0) {
-              console.log('отказ');
+              // console.log('отказ');
               return;
             }
             array.splice(selectionIndex - 1, 1);
-            console.log(`array___${JSON.stringify(array)}`);
+            // console.log(`array___${JSON.stringify(array)}`);
             selectionIndex -= 1;
             setCursor();
             allText = array.join('');
@@ -202,14 +204,14 @@ function createKeyboard() {
     function tab() {
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === null) {
-          console.log('отказ');
+          // console.log('отказ');
           selectionIndex = UImethods.getTextareaSelectionStart();
         }
-        console.log(`++++++++++++++${selectionIndex}`);
+        // console.log(`++++++++++++++${selectionIndex}`);
         // const tail = array.splice(selectionIndex, array.length);
         array = array.concat(' ', ' ', ' ', ' ', array.splice(selectionIndex, array.length));
 
-        console.log(`array___${JSON.stringify(array)}`);
+        // console.log(`array___${JSON.stringify(array)}`);
 
         selectionIndex += 4;
         setCursor();
@@ -219,7 +221,7 @@ function createKeyboard() {
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
             array = array.concat(' ', ' ', ' ', ' ', array.splice(selectionIndex, array.length));
-            console.log(`array___${JSON.stringify(array)}`);
+            // console.log(`array___${JSON.stringify(array)}`);
             setCursor();
             selectionIndex += 4;
             allText = array.join('');
@@ -373,7 +375,7 @@ function createKeyboard() {
     function addSymbolToTextareaByKeyboard(eventCode) {
       if (!checkIsControlButton(eventCode)) {
         const match = eventCode.match(/([\w]{1,10})$/);
-        console.log(`совпадение класса ${match[1]}__словарь${dict[match[1]]}`);
+        // console.log(`совпадение класса ${match[1]}__словарь${dict[match[1]]}`);
         addSymbol(dict[match[1]]);
       }
     }

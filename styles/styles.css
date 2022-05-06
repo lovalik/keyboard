@@ -6,8 +6,25 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     font-family: "Roboto", "Arial", sans-serif;
+    background-color: #21897E;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-top: 45px;
+    padding: 15px;
+    background-color: #585858;
+    border-radius: 10px;
+    border: solid 1px #000000;
+    filter: drop-shadow(5px 5px 5px);
+
 }
 
 .keyboard {
@@ -22,7 +39,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin-bottom: 10px;
 }
 
 .message_change-language-buttons,
@@ -37,6 +53,10 @@ body {
     width: 1250px;
     height: 200px;
     font-family: "Roboto", "Arial", sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.3px;
+    text-shadow: 1px 1px 1px #484848;
+    background-color: #CACACA;
 }
 
 .keyboard-buttons_wrapper {
@@ -58,8 +78,8 @@ body {
     row-gap: 5px;
     width: 835px;
     padding: 10px;
-    border: solid 3px black;
-    background-color: rgb(202, 202, 202);
+    border: solid 3px #000000;
+    background-color: #CACACA;
     border-radius: 3px;
 }
 
@@ -85,7 +105,7 @@ body {
     height: 50px;
     box-sizing: border-box;
     color: white;
-    background-color: black;
+    background-color: #000000;
     border-radius: 6px;
 }
 
@@ -95,8 +115,8 @@ body {
 .forth-row > div:hover,
 .fifth-row > div:hover {
     cursor: pointer;
-    background-color: yellow;
-    color: black;
+    background-color: #0079D7;
+    color: #000000;
     text-shadow: 1px 1px 1px;
 }
 
@@ -117,7 +137,6 @@ body {
 
 .key_Tab {
     flex-grow: 1;
-    color: rgb(187, 205, 50)
 }
 
 .key_Space {
@@ -134,10 +153,10 @@ body {
 .fifth-row > .flag {
     position: absolute;
     top: 0;
-    left: -3px;
-    height: 25px;
-    width: 40px;
-    border: solid 1px black;
+    left: -6px;
+    height: 18px;
+    width: 30px;
+    border: solid 1px #000000;
     border-radius: 0;
     background-position: center;
     background-repeat: no-repeat;
@@ -189,7 +208,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    outline: solid 1px rgb(189, 189, 189);
 }
 
 .message_flag:before {
@@ -199,7 +217,7 @@ body {
     content: "";
     border-top: solid 5px transparent;
     border-bottom: solid 5px transparent;
-    border-left: solid 10px black;
+    border-left: solid 10px #000000;
     border-right: solid 1px transparent;
 }
 
@@ -210,15 +228,15 @@ body {
     content: "";
     border-top: solid 5px transparent;
     border-bottom: solid 5px transparent;
-    border-left: solid 10px black;
+    border-left: solid 10px #000000;
     border-right: solid 1px transparent;
 }
 
 .message_windows10-logo {
     position: relative;
-    top: 7px;
     width: 130px;
-    height: 20px;
+    height: 30px;
+    margin: 10px 0;
     background-image: url("../assets/images/windows10-logo.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -227,7 +245,7 @@ body {
 
 .ecmascript6-features {
   width: 855px;
-  margin-top: 25px;
+  margin-top: 45px;
   font-size: 14px;
 }
 
@@ -245,22 +263,9 @@ body {
     font-size: 14px;
 }
 
-.modules {
-    font-weight: 900;
-    color: rgb(75, 171, 219);
-}
-
-.class-name {
-    font-weight: 900;
-    color: rgb(12, 228, 48);
-}
-
-.let {
-    font-weight: 900;
-    color:rgb(18, 10, 244);
-}
-
+.class-name,
+.modules,
+.let,
 .const {
     font-weight: 900;
-    color:rgb(217, 27, 198);
 }

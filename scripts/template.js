@@ -3,6 +3,7 @@ function createTemplate(dictionary) {
                             <div class='keyboard-screen_wrapper'>
                               <textarea class='screen_textarea' spellcheck='true'></textarea>
                             </div>
+                            <div class='message_windows10-logo'></div>
                             <div class='keyboard-buttons_wrapper'>
                               <div class='keyboard__buttons'>
                                     <div class='first-row'>
@@ -87,7 +88,6 @@ function createTemplate(dictionary) {
                                     <span class='message_os'>CTRL + ALT</span>
                                     <span class='message_flag'></span>
                                 </div>
-                                <div class='message_windows10-logo'></div>
                             </div>
                             <div class="ecmascript6-features">
                                 <p>ECMAscript 6 features:</p>
