@@ -367,7 +367,7 @@ function createKeyboard() {
     function addSymbolToTextareaByKeyboard(eventCode) {
       if (!checkIsControlButton(eventCode)) {
         const match = eventCode.match(/([\w]{1,10})$/);
-        // console.log(`совпадение класса ${match[1]}__словарь${dict[match[1]]}`);
+        console.log(`совпадение класса ${match[1]}__словарь${dict[match[1]]}`);
         addSymbol(dict[match[1]]);
       }
     }

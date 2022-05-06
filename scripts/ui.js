@@ -39,19 +39,19 @@ function createUI({
   const firstRowThirteenthButton = keyboard.querySelector('.key_equal');
   const firstRowButtonBackspace = keyboard.querySelector('.key_backspace');
 
-  methods.methodForAlphanumericButton(firstRowFirstButton, dict.backquote);
-  methods.methodForAlphanumericButton(firstRowSecondButton, dict.digit1);
-  methods.methodForAlphanumericButton(firstRowThirdButton, dict.digit2);
-  methods.methodForAlphanumericButton(firstRowForthThirdButton, dict.digit3);
-  methods.methodForAlphanumericButton(firstRowFifthButton, dict.digit4);
-  methods.methodForAlphanumericButton(firstRowSixButton, dict.digit5);
-  methods.methodForAlphanumericButton(firstRowSeventhButton, dict.digit6);
-  methods.methodForAlphanumericButton(firstRowEighthButton, dict.digit7);
-  methods.methodForAlphanumericButton(firstRowNinthButton, dict.digit8);
-  methods.methodForAlphanumericButton(firstRowTenthButton, dict.digit9);
+  methods.methodForAlphanumericButton(firstRowFirstButton, dict.Backquote);
+  methods.methodForAlphanumericButton(firstRowSecondButton, dict.Digit1);
+  methods.methodForAlphanumericButton(firstRowThirdButton, dict.Digit2);
+  methods.methodForAlphanumericButton(firstRowForthThirdButton, dict.Digit3);
+  methods.methodForAlphanumericButton(firstRowFifthButton, dict.Digit4);
+  methods.methodForAlphanumericButton(firstRowSixButton, dict.Digit5);
+  methods.methodForAlphanumericButton(firstRowSeventhButton, dict.Digit6);
+  methods.methodForAlphanumericButton(firstRowEighthButton, dict.Digit7);
+  methods.methodForAlphanumericButton(firstRowNinthButton, dict.Digit8);
+  methods.methodForAlphanumericButton(firstRowTenthButton, dict.Digit9);
   methods.methodForAlphanumericButton(firstRowEleventhButton, dict.digit0);
-  methods.methodForAlphanumericButton(firstRowTwelfthButton, dict.minus);
-  methods.methodForAlphanumericButton(firstRowThirteenthButton, dict.equal);
+  methods.methodForAlphanumericButton(firstRowTwelfthButton, dict.Minus);
+  methods.methodForAlphanumericButton(firstRowThirteenthButton, dict.Equal);
   methods.methodForBackspace(firstRowButtonBackspace);
 
   // ВТОРОЙ РЯД КЛАВИШ
@@ -72,19 +72,19 @@ function createUI({
   const secondRowButtonDelete = keyboard.querySelector('.key_delete');
 
   methods.methodForTabButton(secondRowButtonTab);
-  methods.methodForAlphanumericButton(secondRowFirstButton, dict.keyQ);
-  methods.methodForAlphanumericButton(secondRowSecondButton, dict.keyW);
-  methods.methodForAlphanumericButton(secondRowThirdButton, dict.keyE);
-  methods.methodForAlphanumericButton(secondRowForthButton, dict.keyR);
-  methods.methodForAlphanumericButton(secondRowFifthButton, dict.keyT);
-  methods.methodForAlphanumericButton(secondRowSixButton, dict.keyY);
-  methods.methodForAlphanumericButton(secondRowSeventhButton, dict.keyU);
-  methods.methodForAlphanumericButton(secondRowEighthButton, dict.keyI);
-  methods.methodForAlphanumericButton(secondRowNinthButton, dict.keyO);
-  methods.methodForAlphanumericButton(secondRowTenthButton, dict.keyP);
-  methods.methodForAlphanumericButton(secondRowEleventhButton, dict.bracketRight);
-  methods.methodForAlphanumericButton(secondRowTwelfthButton, dict.bracketLeft);
-  methods.methodForAlphanumericButton(secondRowThirteenthButton, dict.backslash);
+  methods.methodForAlphanumericButton(secondRowFirstButton, dict.KeyQ);
+  methods.methodForAlphanumericButton(secondRowSecondButton, dict.KeyW);
+  methods.methodForAlphanumericButton(secondRowThirdButton, dict.KeyE);
+  methods.methodForAlphanumericButton(secondRowForthButton, dict.KeyR);
+  methods.methodForAlphanumericButton(secondRowFifthButton, dict.KeyT);
+  methods.methodForAlphanumericButton(secondRowSixButton, dict.KeyY);
+  methods.methodForAlphanumericButton(secondRowSeventhButton, dict.KeyU);
+  methods.methodForAlphanumericButton(secondRowEighthButton, dict.KeyI);
+  methods.methodForAlphanumericButton(secondRowNinthButton, dict.KeyO);
+  methods.methodForAlphanumericButton(secondRowTenthButton, dict.KeyP);
+  methods.methodForAlphanumericButton(secondRowEleventhButton, dict.BracketRight);
+  methods.methodForAlphanumericButton(secondRowTwelfthButton, dict.BracketLeft);
+  methods.methodForAlphanumericButton(secondRowThirteenthButton, dict.Backslash);
   methods.methodForDelete(secondRowButtonDelete);
 
   // methods.methodForAlphanumericButton( secondRowButtonDelete, dict[ 'button_delete' ] );
@@ -105,17 +105,17 @@ function createUI({
   const thirdRowButtonEnter = keyboard.querySelector('.key_enter');
 
   methods.methodForCapsLock(thirdRowButtonCapsLock);
-  methods.methodForAlphanumericButton(thirdRowFirstButton, dict.keyA);
-  methods.methodForAlphanumericButton(thirdRowSecondButton, dict.keyS);
-  methods.methodForAlphanumericButton(thirdRowThirdButton, dict.keyD);
-  methods.methodForAlphanumericButton(thirdRowForthThirdButton, dict.keyF);
-  methods.methodForAlphanumericButton(thirdRowFifthButton, dict.keyG);
-  methods.methodForAlphanumericButton(thirdRowSixButton, dict.keyH);
-  methods.methodForAlphanumericButton(thirdRowSeventhButton, dict.keyJ);
-  methods.methodForAlphanumericButton(thirdRowEighthButton, dict.keyK);
-  methods.methodForAlphanumericButton(thirdRowNinthButton, dict.keyL);
-  methods.methodForAlphanumericButton(thirdRowTenthButton, dict.semicolon);
-  methods.methodForAlphanumericButton(thirdRowEleventhButton, dict.quote);
+  methods.methodForAlphanumericButton(thirdRowFirstButton, dict.KeyA);
+  methods.methodForAlphanumericButton(thirdRowSecondButton, dict.KeyS);
+  methods.methodForAlphanumericButton(thirdRowThirdButton, dict.KeyD);
+  methods.methodForAlphanumericButton(thirdRowForthThirdButton, dict.KeyF);
+  methods.methodForAlphanumericButton(thirdRowFifthButton, dict.KeyG);
+  methods.methodForAlphanumericButton(thirdRowSixButton, dict.KeyH);
+  methods.methodForAlphanumericButton(thirdRowSeventhButton, dict.KeyJ);
+  methods.methodForAlphanumericButton(thirdRowEighthButton, dict.KeyK);
+  methods.methodForAlphanumericButton(thirdRowNinthButton, dict.KeyL);
+  methods.methodForAlphanumericButton(thirdRowTenthButton, dict.Semicolon);
+  methods.methodForAlphanumericButton(thirdRowEleventhButton, dict.Quote);
   methods.methodForAlphanumericButton(thirdRowButtonEnter, '\n');
 
   // ЧЕТВЕРТЫЙ РЯД КЛАВИШ
@@ -134,17 +134,17 @@ function createUI({
   const forthRowButtonShiftRight = keyboard.querySelector('.key_shift-right');
 
   methods.methodForShiftButton(forthRowButtonShiftLeft, 'ShiftLeft');
-  methods.methodForAlphanumericButton(forthRowFirstButton, dict.keyZ);
-  methods.methodForAlphanumericButton(forthRowSecondButton, dict.keyX);
-  methods.methodForAlphanumericButton(forthRowThirdButton, dict.keyC);
-  methods.methodForAlphanumericButton(forthRowForthButton, dict.keyV);
-  methods.methodForAlphanumericButton(forthRowFifthButton, dict.keyB);
-  methods.methodForAlphanumericButton(forthRowSixButton, dict.keyN);
-  methods.methodForAlphanumericButton(forthRowSeventhButton, dict.keyM);
-  methods.methodForAlphanumericButton(forthRowEighthButton, dict.comma);
-  methods.methodForAlphanumericButton(forthRowNinthButton, dict.period);
-  methods.methodForAlphanumericButton(forthRowTenthButton, dict.slash);
-  methods.methodForAlphanumericButton(forthRowArrowUp, dict.arrowUp);
+  methods.methodForAlphanumericButton(forthRowFirstButton, dict.KeyZ);
+  methods.methodForAlphanumericButton(forthRowSecondButton, dict.KeyX);
+  methods.methodForAlphanumericButton(forthRowThirdButton, dict.KeyC);
+  methods.methodForAlphanumericButton(forthRowForthButton, dict.KeyV);
+  methods.methodForAlphanumericButton(forthRowFifthButton, dict.KeyB);
+  methods.methodForAlphanumericButton(forthRowSixButton, dict.KeyN);
+  methods.methodForAlphanumericButton(forthRowSeventhButton, dict.KeyM);
+  methods.methodForAlphanumericButton(forthRowEighthButton, dict.Comma);
+  methods.methodForAlphanumericButton(forthRowNinthButton, dict.Period);
+  methods.methodForAlphanumericButton(forthRowTenthButton, dict.Slash);
+  methods.methodForAlphanumericButton(forthRowArrowUp, dict.ArrowUp);
   methods.methodForShiftButton(forthRowButtonShiftRight, 'ShiftRight');
 
   // ПЯТЫЙ РЯД КЛАВИШ
@@ -163,11 +163,11 @@ function createUI({
   methods.methodForAlphanumericButton(fifthRowButtonCtrl);
   methods.methodForAlphanumericButton(fifthRowButtonWin);
   methods.methodForAlphanumericButton(fifthRowAltLeft);
-  methods.methodForAlphanumericButton(fifthRowSpace, dict.space);
+  methods.methodForAlphanumericButton(fifthRowSpace, dict.Space);
   methods.methodForAlphanumericButton(fifthRowAltRight);
-  methods.methodForAlphanumericButton(fifthRowArrowLeft, dict.arrowLeft);
-  methods.methodForAlphanumericButton(fifthRowArrowDown, dict.arrowDown);
-  methods.methodForAlphanumericButton(fifthRowArrowRight, dict.arrowRight);
+  methods.methodForAlphanumericButton(fifthRowArrowLeft, dict.ArrowLeft);
+  methods.methodForAlphanumericButton(fifthRowArrowDown, dict.ArrowDown);
+  methods.methodForAlphanumericButton(fifthRowArrowRight, dict.ArrowRight);
 
   methods.highlightButtonShiftLeft(forthRowButtonShiftLeft);
   methods.highlightButtonShiftRight(forthRowButtonShiftRight);
