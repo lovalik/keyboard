@@ -68,7 +68,7 @@ function createKeyboard() {
     keyboardContainer.innerHTML = keyboard;
   }
 
-  const methodsUI = createUI({
+  const UImethods = createUI({
     appendKeyboard,
     dict,
     // eslint-disable-next-line no-use-before-define
@@ -87,13 +87,13 @@ function createKeyboard() {
     let intervalIdForAddSymbol;
 
     function setCursor() {
-      methodsUI.focusTextarea();
-      methodsUI.changeTextareaStyleProperty('caretColor', 'transparent');
+      UImethods.focusTextarea();
+      UImethods.changeTextareaStyleProperty('caretColor', 'transparent');
       setTimeout(() => {
-        methodsUI.changeTextareaStyleProperty('caretColor', 'black');
+        UImethods.changeTextareaStyleProperty('caretColor', 'black');
         // console.log( `set cursor: будет поставлен в позицию ${ selectionIndex}` );
-        methodsUI.setTextareaSelectionStart(selectionIndex);
-        methodsUI.setTextareaSelectionEnd(selectionIndex);
+        UImethods.setTextareaSelectionStart(selectionIndex);
+        UImethods.setTextareaSelectionEnd(selectionIndex);
       });
     }
 
@@ -114,8 +114,8 @@ function createKeyboard() {
 
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === null) {
-          alert(2);
-          selectionIndex = methodsUI.getTextareaSelectionStart();
+          console.log('отказ');
+          selectionIndex = UImethods.getTextareaSelectionStart();
         }
         console.log(`++++++++++++++${selectionIndex}`);
         // const tail = array.splice(selectionIndex, array.length);
@@ -126,7 +126,7 @@ function createKeyboard() {
         selectionIndex += 1;
         setCursor();
         allText = array.join('');
-        methodsUI.changeTextareaInnerHTML(array.join(''));
+        UImethods.changeTextareaInnerHTML(array.join(''));
 
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
@@ -135,7 +135,7 @@ function createKeyboard() {
             setCursor();
             selectionIndex += 1;
             allText = array.join('');
-            methodsUI.changeTextareaInnerHTML(array.join(''));
+            UImethods.changeTextareaInnerHTML(array.join(''));
           }, 50);
         }, 600);
       }
@@ -149,7 +149,7 @@ function createKeyboard() {
         console.log(`array___${JSON.stringify(array)}`);
         setCursor();
         allText = array.join('');
-        methodsUI.changeTextareaInnerHTML(array.join(''));
+        UImethods.changeTextareaInnerHTML(array.join(''));
 
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
@@ -158,7 +158,7 @@ function createKeyboard() {
             console.log(`array___${JSON.stringify(array)}`);
             setCursor();
             allText = array.join('');
-            methodsUI.changeTextareaInnerHTML(array.join(''));
+            UImethods.changeTextareaInnerHTML(array.join(''));
           }, 30);
         }, 600);
       }
@@ -169,7 +169,7 @@ function createKeyboard() {
 
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === 0) {
-          alert(1);
+          console.log('отказ');
           return;
         }
 
@@ -178,12 +178,12 @@ function createKeyboard() {
         selectionIndex -= 1;
         setCursor();
         allText = array.join('');
-        methodsUI.changeTextareaInnerHTML(array.join(''));
+        UImethods.changeTextareaInnerHTML(array.join(''));
 
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
             if (selectionIndex === 0) {
-              alert(1);
+              console.log('отказ');
               return;
             }
             array.splice(selectionIndex - 1, 1);
@@ -191,7 +191,7 @@ function createKeyboard() {
             selectionIndex -= 1;
             setCursor();
             allText = array.join('');
-            methodsUI.changeTextareaInnerHTML(array.join(''));
+            UImethods.changeTextareaInnerHTML(array.join(''));
           }, 30);
         }, 600);
       }
@@ -200,8 +200,8 @@ function createKeyboard() {
     function tab() {
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === null) {
-          alert(2);
-          selectionIndex = methodsUI.getTextareaSelectionStart();
+          console.log('отказ');
+          selectionIndex = UImethods.getTextareaSelectionStart();
         }
         console.log(`++++++++++++++${selectionIndex}`);
         // const tail = array.splice(selectionIndex, array.length);
@@ -212,7 +212,7 @@ function createKeyboard() {
         selectionIndex += 4;
         setCursor();
         allText = array.join('');
-        methodsUI.changeTextareaInnerHTML(array.join(''));
+        UImethods.changeTextareaInnerHTML(array.join(''));
 
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
@@ -221,7 +221,7 @@ function createKeyboard() {
             setCursor();
             selectionIndex += 4;
             allText = array.join('');
-            methodsUI.changeTextareaInnerHTML(array.join(''));
+            UImethods.changeTextareaInnerHTML(array.join(''));
           }, 50);
         }, 600);
       }

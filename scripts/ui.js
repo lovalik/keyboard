@@ -198,38 +198,66 @@ function createUI({
     methods.setSelectionIndex(textarea.selectionStart);
   });
 
-  function changeTextareaStyleProperty(property, value) {
-    textarea.style[property] = value;
+  // function changeTextareaStyleProperty(property, value) {
+  //   textarea.style[property] = value;
+  // }
+
+  // function focusTextarea() {
+  //   textarea.focus();
+  // }
+
+  // function changeTextareaInnerHTML(value) {
+  //   textarea.innerHTML = value;
+  // }
+
+  // function setTextareaSelectionStart(value) {
+  //   textarea.selectionStart = value;
+  // }
+
+  // function setTextareaSelectionEnd(value) {
+  //   textarea.selectionEnd = value;
+  // }
+
+  // function getTextareaSelectionStart() {
+  //   return textarea.selectionStart;
+  // }
+
+  // return {
+  //   changeTextareaStyleProperty,
+  //   focusTextarea,
+  //   changeTextareaInnerHTML,
+  //   setTextareaSelectionStart,
+  //   setTextareaSelectionEnd,
+  //   getTextareaSelectionStart,
+  // };
+
+  class UImethods {
+    static changeTextareaStyleProperty(property, value) {
+      textarea.style[property] = value;
+    }
+
+    static focusTextarea() {
+      textarea.focus();
+    }
+
+    static changeTextareaInnerHTML(value) {
+      textarea.innerHTML = value;
+    }
+
+    static setTextareaSelectionStart(value) {
+      textarea.selectionStart = value;
+    }
+
+    static setTextareaSelectionEnd(value) {
+      textarea.selectionEnd = value;
+    }
+
+    static getTextareaSelectionStart() {
+      return textarea.selectionStart;
+    }
   }
 
-  function focusTextarea() {
-    textarea.focus();
-  }
-
-  function changeTextareaInnerHTML(value) {
-    textarea.innerHTML = value;
-  }
-
-  function setTextareaSelectionStart(value) {
-    textarea.selectionStart = value;
-  }
-
-  function setTextareaSelectionEnd(value) {
-    textarea.selectionEnd = value;
-  }
-
-  function getTextareaSelectionStart() {
-    return textarea.selectionStart;
-  }
-
-  return {
-    changeTextareaStyleProperty,
-    focusTextarea,
-    changeTextareaInnerHTML,
-    setTextareaSelectionStart,
-    setTextareaSelectionEnd,
-    getTextareaSelectionStart,
-  };
+  return UImethods;
 }
 
 export default createUI;
