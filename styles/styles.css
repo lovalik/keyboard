@@ -30,10 +30,6 @@ body {
     margin-top: 15px;
 }
 
-* {
-    /* outline: solid 1px red; */
-}
-
 .keyboard__screen {
     width: 100%;
 }
@@ -73,7 +69,6 @@ body {
 .forth-row,
 .fifth-row {
     display: flex;
-    /* justify-content: space-between; */
     column-gap: 4px;
 }
 
@@ -94,23 +89,6 @@ body {
     border-radius: 6px;
 }
 
-.first-row > div:before,
-.second-row > div:before,
-.third-row > div:before,
-.forth-row > div:before,
-.fifth-row > div:before {
-    /* position: absolute;
-    z-index: 1000;
-    top: 5px;
-    bottom: 5px;
-    left: 5px;
-    right: 5px;
-    box-sizing: border-box;
-    content: "";
-    border: solid 2px rgb(99, 99, 99);
-    border-radius: 4px; */
-}
-
 .first-row > div:hover,
 .second-row > div:hover,
 .third-row > div:hover,
@@ -120,93 +98,50 @@ body {
     background-color: yellow;
     color: black;
     text-shadow: 1px 1px 1px;
-    font-size: 18px;
 }
 
-.first-row > div:active,
-.second-row > div:active,
-.third-row > div:active,
-.forth-row > div:active,
-.fifth-row > div:active {
-    /* align-self: center;
-    width: 44px;
-    height: 44px;
-    margin: 3px; */
-    /* border-radius: 30%; */
-}
-
-.key_backquote,
-.key_capslock,
-.key_enter,
-.key_delete,
-.key_shift-left,
-.key_shift-right,
-.key_control-right,
-.key_control-left {
+.key_Backquote,
+.key_CapsLock,
+.key_Enter,
+.key_Delete,
+.key_ShiftLeft,
+.key_ShiftRight,
+.key_ControlRight,
+.key_ControlLeft {
     flex-grow: 1;
 }
 
-.key_backspace {
+.key_Backspace {
     flex-grow: 5;
 }
 
-.key_tab {
+.key_Tab {
     flex-grow: 1;
     color: rgb(187, 205, 50)
 }
 
-.key_space {
+.key_Space {
     flex-grow: 24;
 }
 
-.key_arrow-up:after {
-    content: "";
-    border-top: solid 5px transparent;
-    border-left: solid 10px transparent;
-    border-right: solid 10px transparent;
-    border-bottom: solid 15px white;
-}
-
-.key_arrow-left:after {
-    margin-right: 10px;
-    content: "";
-    border-left: solid 5px transparent;
-    border-top: solid 10px transparent;
-    border-bottom: solid 10px transparent;
-    border-right: solid 15px white;
-}
-
-.key_arrow-down:after {
-    margin-top: 10px;
-    content: "";
-    border-bottom: solid 5px transparent;
-    border-left: solid 10px transparent;
-    border-right: solid 10px transparent;
-    border-top: solid 15px white;
-}
-
-.key_arrow-right:after {
-    margin-left: 10px;
-    content: "";
-    border-right: solid 5px transparent;
-    border-top: solid 10px transparent;
-    border-bottom: solid 10px transparent;
-    border-left: solid 15px white;
+.key_ArrowUp,
+.key_ArrowDown,
+.key_ArrowLeft,
+.key_ArrowRight {
+    font-size: 24px;
 }
 
 .fifth-row > .flag {
     position: absolute;
-    top: 0px;
+    top: 0;
     left: -3px;
-    /* width: 30px; */
     height: 25px;
     width: 40px;
     border: solid 1px black;
-    border-radius: 0%;
+    border-radius: 0;
     background-position: center;
     background-repeat: no-repeat;
     background-size:cover;
-    /* ba */
     background-color: transparent;
 }
 
@@ -225,7 +160,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* outline: solid 1px red; */
 }
 
 .message_change-language {
@@ -237,7 +171,6 @@ body {
     height: 25px;
     width: auto;
     vertical-align: middle;
-    /* outline: solid 1px rgb(25, 0, 255); */
 }
 
 .message_change-language > span {
@@ -246,12 +179,10 @@ body {
 
 .message_os {
     font-weight: bold;
-    /* outline: solid 1px red; */
 }
 
 .message_flag {
     position: relative;
-    /* top: 7px; */
     width: 25px;
     height: 15px;
     margin: 0 0 0 40px;
@@ -292,14 +223,12 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    /* outline: solid 1px red; */
 }
 
 .ecmascript6-features {
   width: 855px;
   margin-top: 25px;
   font-size: 14px;
-  /* outline: solid 1px red; */
 }
 
 .ecmascript6-features > p {
@@ -314,4 +243,24 @@ body {
 
 .ecmascript6-features_ul > li {
     font-size: 14px;
+}
+
+.modules {
+    font-weight: 900;
+    color: rgb(75, 171, 219);
+}
+
+.class-name {
+    font-weight: 900;
+    color: rgb(12, 228, 48);
+}
+
+.let {
+    font-weight: 900;
+    color:rgb(18, 10, 244);
+}
+
+.const {
+    font-weight: 900;
+    color:rgb(217, 27, 198);
 }

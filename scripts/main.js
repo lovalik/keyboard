@@ -10,9 +10,10 @@ function createKeyboard() {
   // localStorage.clear()
 
   let language = localStorage.getItem('language');
-  let register = localStorage.getItem('register');
   let shiftState = localStorage.getItem('shiftState');
   let shiftButton = localStorage.getItem('shiftButton');
+  let capslockState = localStorage.getItem('capslockState');
+  let capslockButtonWasUp = localStorage.getItem('capslockButtonWasUp');
   let allText = localStorage.getItem('allText');
   const arrayOfAllText = localStorage.getItem('array');
   let selectionIndex = localStorage.getItem('selectionIndex');
@@ -22,19 +23,19 @@ function createKeyboard() {
   let ctrl = false;
   let array;
 
-  console.log(`память: ${language}___${register}___${shiftState}__${shiftButton}__${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
+  console.log(`память: ${language}______${shiftState}__${shiftButton}_caps${capslockState}__${capslockButtonWasUp}__${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
   console.log(`память: ${array}___${selectionIndex}`);
   if (language === null) {
     language = 'eng';
   }
 
-  if (register === null) {
-    register = 'lower';
-    shiftState = 'noShift';
+  if (capslockState === null) {
+    capslockState = 'capslock_off';
+    capslockButtonWasUp = true;
+    shiftState = 'shift_off';
   }
 
-  const dict = dictionary[language][register][shiftState];
-  // console.log(JSON.stringify(dict))
+  const dict = dictionary[language][capslockState][shiftState];
 
   if (allText === null && arrayOfAllText === null) {
     allText = '';
@@ -50,7 +51,7 @@ function createKeyboard() {
     textAreaHeight = 100;
   }
 
-  console.log(`после перезагрузки: ${language}___${register}___${shiftState}___${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
+  console.log(`после перезагрузки: ${language}_____${shiftState}__caps${capslockState}__${capslockButtonWasUp}____${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
   console.log(`после перезагрузки: ${array}___selind${selectionIndex}`);
 
   const observer = new ResizeObserver((entries) => {
@@ -73,8 +74,8 @@ function createKeyboard() {
     dict,
     // eslint-disable-next-line no-use-before-define
     methodsForButtons,
-    register,
     allText,
+    selectionIndex,
     textAreaWidth,
     textAreaHeight,
     observer,
@@ -99,9 +100,10 @@ function createKeyboard() {
 
     function writeKeyboardParametersToLocalStorage() {
       localStorage.setItem('language', language);
-      localStorage.setItem('register', register);
       localStorage.setItem('shiftState', shiftState);
       localStorage.setItem('shiftButton', shiftButton);
+      localStorage.setItem('capslockState', capslockState);
+      localStorage.setItem('capslockButtonWasUp', capslockButtonWasUp);
       localStorage.setItem('allText', allText);
       localStorage.setItem('array', array);
       localStorage.setItem('selectionIndex', selectionIndex);
@@ -243,10 +245,14 @@ function createKeyboard() {
     }
 
     function changeSymbolRegister() {
-      if (register === 'lower') {
-        register = 'upper';
+      if (capslockState === 'capslock_on' && capslockButtonWasUp === true) {
+        capslockState = 'capslock_off';
+        capslockButtonWasUp = false;
+      } else if (capslockState === 'capslock_off' && capslockButtonWasUp === true) {
+        capslockState = 'capslock_on';
+        capslockButtonWasUp = false;
       } else {
-        register = 'lower';
+        return;
       }
 
       writeKeyboardParametersToLocalStorage();
@@ -255,8 +261,8 @@ function createKeyboard() {
     }
 
     function activateShift(eventCode) {
-      if (shiftState !== 'shift') {
-        shiftState = 'shift';
+      if (shiftState === 'shift_off') {
+        shiftState = 'shift_on';
         shiftButton = eventCode;
         writeKeyboardParametersToLocalStorage();
         document.location.reload();
@@ -265,7 +271,7 @@ function createKeyboard() {
 
     function deactivateShift(eventCode) {
       if (eventCode === 'ShiftLeft' || eventCode === 'ShiftRight') {
-        shiftState = 'noShift';
+        shiftState = 'shift_off';
         shiftButton = null;
         writeKeyboardParametersToLocalStorage();
         document.location.reload();
@@ -285,19 +291,19 @@ function createKeyboard() {
     }
 
     function highlightButtonCapsLock(button) {
-      if (register === 'upper') {
+      if (capslockState === 'capslock_on') {
         button.classList.add('animation');
       }
     }
 
     function highlightButtonShiftLeft(button) {
-      if (shiftState === 'shift' && shiftButton === 'ShiftLeft') {
+      if (shiftState === 'shift_on' && shiftButton === 'ShiftLeft') {
         button.classList.add('animation');
       }
     }
 
     function highlightButtonShiftRight(button) {
-      if (shiftState === 'shift' && shiftButton === 'ShiftRight') {
+      if (shiftState === 'shift_on' && shiftButton === 'ShiftRight') {
         button.classList.add('animation');
       }
     }
@@ -401,6 +407,7 @@ function createKeyboard() {
 
     function methodForCapsLock(elem) {
       elem.addEventListener('mousedown', () => {
+        capslockButtonWasUp = true;
         changeSymbolRegister();
       });
     }
@@ -450,6 +457,12 @@ function createKeyboard() {
       hangEventListenersForMouseAlpahumericButton(elem, tab);
     }
 
+    function trackCapslockButtonWasUp(eventCode) {
+      if (eventCode === 'CapsLock') {
+        capslockButtonWasUp = true;
+      }
+    }
+
     return {
       addClassForAnimation,
       removeClassForAnimation,
@@ -466,6 +479,7 @@ function createKeyboard() {
       setSelectionIndex,
       methodForShiftButton,
       methodForTabButton,
+      trackCapslockButtonWasUp,
     };
   }
 
