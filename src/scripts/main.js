@@ -19,7 +19,8 @@ function createKeyboard() {
   let textAreaWidth = localStorage.getItem('textAreaWidth');
   let textAreaHeight = localStorage.getItem('textAreaHeight');
   let initiatorOfReload = null;
-  let ctrl = false;
+  let ctrlActivate = false;
+  let altActivate = false;
   let array;
 
   if (language === null) {
@@ -200,25 +201,22 @@ function createKeyboard() {
     }
 
     function changeLanguage() {
-      if (ctrl !== true) {
-        return;
+      if (ctrlActivate === true && altActivate === true) {
+        if (language === 'rus') {
+          language = 'eng';
+        } else {
+          language = 'rus';
+        }
+        writeKeyboardParametersToLocalStorage();
+        initiatorOfReload = 'keyboard';
+        document.location.reload();
       }
-
-      if (language === 'rus') {
-        language = 'eng';
-      } else {
-        language = 'rus';
-      }
-      writeKeyboardParametersToLocalStorage();
-      initiatorOfReload = 'keyboard';
-      document.location.reload();
     }
 
     function changeSymbolRegister() {
       if (capslockButtonWasReleased !== 'yes') {
         return;
       }
-      // alert(1)
       if (capslockState === 'capslock_on') {
         capslockState = 'capslock_off';
         capslockButtonWasReleased = 'no';
@@ -325,15 +323,35 @@ function createKeyboard() {
           activateShift(eventCode);
           break;
         case 'ControlLeft':
-          ctrl = true;
+          if (ctrlActivate === true) {
+            ctrlActivate = false;
+          } else if (ctrlActivate === false) {
+            ctrlActivate = true;
+          }
+          changeLanguage();
           break;
         case 'ControlRight':
-          ctrl = true;
+          if (ctrlActivate === true) {
+            ctrlActivate = false;
+          } else if (ctrlActivate === false) {
+            ctrlActivate = true;
+          }
+          changeLanguage();
           break;
         case 'AltLeft':
+          if (altActivate === true) {
+            altActivate = false;
+          } else if (altActivate === false) {
+            altActivate = true;
+          }
           changeLanguage();
           break;
         case 'AltRight':
+          if (altActivate === true) {
+            altActivate = false;
+          } else if (altActivate === false) {
+            altActivate = true;
+          }
           changeLanguage();
           break;
         case 'Enter':
@@ -348,7 +366,7 @@ function createKeyboard() {
 
     function addSymbolToTextareaByKeyboard(eventCode) {
       if (!checkIsControlButton(eventCode)) {
-        const match = eventCode.match(/([\w]{1,10})$/);
+        const match = eventCode.match(/([\w]{1,20})$/);
         addSymbol(dict[match[1]]);
       }
     }
@@ -376,7 +394,7 @@ function createKeyboard() {
       }
 
       if (eventCode === 'ControlLeft' || eventCode === 'ControlRight') {
-        ctrl = false;
+        ctrlActivate = false;
       }
     }
 
@@ -387,7 +405,7 @@ function createKeyboard() {
       });
     }
 
-    function hangEventListenersForMouseAlpahumericButton(elem, callback, symbol) {
+    function hangEventListenersForMouseButton(elem, callback, symbol) {
       elem.addEventListener('mousedown', (event) => {
         event.preventDefault();
         setCursor();
@@ -405,15 +423,15 @@ function createKeyboard() {
     }
 
     function methodForAlphanumericButton(elem, symbol) {
-      hangEventListenersForMouseAlpahumericButton(elem, addSymbol, symbol);
+      hangEventListenersForMouseButton(elem, addSymbol, symbol);
     }
 
     function methodForBackspace(elem) {
-      hangEventListenersForMouseAlpahumericButton(elem, backspaceSymbol);
+      hangEventListenersForMouseButton(elem, backspaceSymbol);
     }
 
     function methodForDelete(elem) {
-      hangEventListenersForMouseAlpahumericButton(elem, deleteSymbol);
+      hangEventListenersForMouseButton(elem, deleteSymbol);
     }
 
     function setSelectionIndex(value) {
@@ -421,7 +439,7 @@ function createKeyboard() {
     }
 
     function methodForShiftButton(elem, eventCode) {
-      hangEventListenersForMouseAlpahumericButton(elem, activateShift, eventCode);
+      hangEventListenersForMouseButton(elem, activateShift, eventCode);
 
       elem.addEventListener('mouseup', () => {
         deactivateShift(eventCode);
@@ -429,13 +447,59 @@ function createKeyboard() {
     }
 
     function methodForTabButton(elem) {
-      hangEventListenersForMouseAlpahumericButton(elem, tab);
+      hangEventListenersForMouseButton(elem, tab);
     }
 
     function trackCapslockButtonWasReleased(eventCode) {
       if (eventCode === 'CapsLock') {
         capslockButtonWasReleased = 'yes';
       }
+    }
+
+    function methodForWinButton(elem) {
+      elem.addEventListener('mousedown', (event) => {
+        addAnimationWhenDownMouseButton(event.currentTarget);
+      });
+
+      elem.addEventListener('mouseup', (event) => {
+        removeAnimationWhenUpMouseButton(event.currentTarget);
+      });
+
+      elem.addEventListener('mouseout', (event) => {
+        removeAnimationWhenUpMouseButton(event.currentTarget);
+      });
+    }
+
+    function methodForAltButton(elem) {
+      elem.addEventListener('mousedown', (event) => {
+        altActivate = true;
+        addAnimationWhenDownMouseButton(event.currentTarget);
+      });
+
+      elem.addEventListener('mouseup', (event) => {
+        altActivate = false;
+        removeAnimationWhenUpMouseButton(event.currentTarget);
+      });
+
+      elem.addEventListener('mouseout', (event) => {
+        removeAnimationWhenUpMouseButton(event.currentTarget);
+      });
+    }
+
+    function methodForCtrlButton(elem) {
+      elem.addEventListener('mousedown', (event) => {
+        ctrlActivate = true;
+        addAnimationWhenDownMouseButton(event.currentTarget);
+      });
+
+      elem.addEventListener('mouseup', (event) => {
+        ctrlActivate = false;
+        removeAnimationWhenUpMouseButton(event.currentTarget);
+      });
+
+      elem.addEventListener('mouseout', (event) => {
+        removeAnimationWhenUpMouseButton(event.currentTarget);
+      });
     }
 
     return {
@@ -455,6 +519,9 @@ function createKeyboard() {
       methodForShiftButton,
       methodForTabButton,
       trackCapslockButtonWasReleased,
+      methodForWinButton,
+      methodForAltButton,
+      methodForCtrlButton,
     };
   }
 

@@ -113,8 +113,8 @@ function createUI({
   methods.methodForAlphanumericButton(secondRowEighthButton, dict.KeyI);
   methods.methodForAlphanumericButton(secondRowNinthButton, dict.KeyO);
   methods.methodForAlphanumericButton(secondRowTenthButton, dict.KeyP);
-  methods.methodForAlphanumericButton(secondRowEleventhButton, dict.BracketRight);
-  methods.methodForAlphanumericButton(secondRowTwelfthButton, dict.BracketLeft);
+  methods.methodForAlphanumericButton(secondRowEleventhButton, dict.BracketLeft);
+  methods.methodForAlphanumericButton(secondRowTwelfthButton, dict.BracketRight);
   methods.methodForAlphanumericButton(secondRowThirteenthButton, dict.Backslash);
   methods.methodForDelete(secondRowButtonDelete);
 
@@ -188,15 +188,15 @@ function createUI({
   const fifthRowArrowRight = keyboard.querySelector('.key_ArrowRight');
   const fifthRowButtonCtrlRight = keyboard.querySelector('.key_ControlRight');
 
-  methods.methodForAlphanumericButton(fifthRowButtonCtrlLeft);
-  methods.methodForAlphanumericButton(fifthRowButtonWin);
-  methods.methodForAlphanumericButton(fifthRowAltLeft);
+  methods.methodForCtrlButton(fifthRowButtonCtrlLeft);
+  methods.methodForWinButton(fifthRowButtonWin);
+  methods.methodForAltButton(fifthRowAltLeft);
   methods.methodForAlphanumericButton(fifthRowSpace, dict.Space);
-  methods.methodForAlphanumericButton(fifthRowAltRight);
+  methods.methodForAltButton(fifthRowAltRight);
   methods.methodForAlphanumericButton(fifthRowArrowLeft, dict.ArrowLeft);
   methods.methodForAlphanumericButton(fifthRowArrowDown, dict.ArrowDown);
   methods.methodForAlphanumericButton(fifthRowArrowRight, dict.ArrowRight);
-  methods.methodForAlphanumericButton(fifthRowButtonCtrlRight);
+  methods.methodForCtrlButton(fifthRowButtonCtrlRight);
 
   methods.highlightButtonShiftLeft(forthRowButtonShiftLeft);
   methods.highlightButtonShiftRight(forthRowButtonShiftRight);
@@ -206,21 +206,18 @@ function createUI({
 
   document.addEventListener('keydown', (event) => {
     event.preventDefault();
-    // console.log(`ui.js-'keydown'__${event.code}`);
     methods.addClassForAnimation(event.code, allButtons);
     methods.methodsForControlKeys(event.code, textarea);
     methods.addSymbolToTextareaByKeyboard(event.code, textarea);
   });
 
   document.addEventListener('keyup', (event) => {
-    // console.log(`UI.JS-'KEYUP'__+++${event.code}`);
     methods.deactivateShift(event.code);
     methods.trackCapslockButtonWasReleased(event.code);
     methods.removeClassForAnimation(event.code, allButtons);
   });
 
   textarea.addEventListener('click', () => {
-    // console.log(`ui.js позиция курсора ${textarea.selectionStart}`);
     methods.setSelectionIndex(textarea.selectionStart);
   });
 

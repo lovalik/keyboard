@@ -4,7 +4,6 @@
     animation-fill-mode: forwards;
 }
 
-
 @keyframes press {
     0%{
         align-self: center;

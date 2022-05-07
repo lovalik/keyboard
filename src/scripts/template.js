@@ -35,8 +35,8 @@ function createTemplate(dictionary) {
                                   <div class='button key_KeyI'>${dictionary.KeyI}</div>
                                   <div class='button key_KeyO'>${dictionary.KeyO}</div>
                                   <div class='button key_KeyP'>${dictionary.KeyP}</div>
-                                  <div class='button key_BracketRight'>${dictionary.BracketRight}</div>
                                   <div class='button key_BracketLeft'>${dictionary.BracketLeft}</div>
+                                  <div class='button key_BracketRight'>${dictionary.BracketRight}</div>
                                   <div class='button key_Backslash'>${dictionary.Backslash}</div>
                                   <div class='button key_Delete'>${dictionary.Delete}</div>
                                 </div>
@@ -92,7 +92,7 @@ function createTemplate(dictionary) {
                             <div class="ecmascript6-features">
                               <h2>ECMAscript 6 features:</h2>
                               <ul class="ecmascript6-features_ul">
-                                <li>использование модулей: <span class='modules'>main.js</span>, <span class='modules'>ui.js</span>, <span class='modules'>template.js</span>, <span class='modules'>dictionary.js</span> являются модулями т.е. экспортируются или импортируются в другие модули</li>
+                                <li>использование модулей: <span class='modules'>main.js</span>, <span class='modules'>ui.js</span>, <span class='modules'>template.js</span>, <span class='modules'>dictionary.js</span> являются модулями т.е. экспортируются или импортируются</li>
                                 <li>использование стрелочных функций в файле-модуле: <span class='modules'>main.js</span></li>
                                 <li>объявление переменных через <span class="let">let</span> и <span class="const">const</span> в файлах-модулях: <span class='modules'>main.js</span>, <span class='modules'>ui.js</span></li>
                                 <li>использование классов: в модуле <span class='modules'>ui.js</span> объявлен <span class="class-name">class UImethods</span>, методы этого класса используются в <span class='modules'>main.js</span></li>
