@@ -1,7 +1,7 @@
 const dictionary = {
 
   eng: {
-    capslock_off: {
+    'capslock_off': {
       shift_off: {
         // Первый ряд
         Backquote: '`',
