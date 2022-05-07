@@ -7,13 +7,12 @@ function createKeyboard() {
   const keyboardContainer = document.createElement('div');
   keyboardContainer.className = 'container';
   document.body.append(keyboardContainer);
-  // localStorage.clear()
 
   let language = localStorage.getItem('language');
   let shiftState = localStorage.getItem('shiftState');
-  let shiftButton = localStorage.getItem('shiftButton');
+  let shiftButtonEventCode = localStorage.getItem('shiftButtonEventCode');
   let capslockState = localStorage.getItem('capslockState');
-  let capslockButtonWasUp = localStorage.getItem('capslockButtonWasUp');
+  let capslockButtonWasReleased = localStorage.getItem('capslockButtonWasReleased');
   let allText = localStorage.getItem('allText');
   const arrayOfAllText = localStorage.getItem('array');
   let selectionIndex = localStorage.getItem('selectionIndex');
@@ -23,16 +22,13 @@ function createKeyboard() {
   let ctrl = false;
   let array;
 
-  // eslint-disable-next-line max-len
-  // console.log(`память: ${language}______${shiftState}__${shiftButton}_caps${capslockState}__${capslockButtonWasUp}__${allText}___( ${textAreaWidth}-X-${textAreaHeight} )`);
-  // console.log(`память: ${array}___${selectionIndex}`);
   if (language === null) {
     language = 'eng';
   }
 
   if (capslockState === null) {
     capslockState = 'capslock_off';
-    capslockButtonWasUp = true;
+    capslockButtonWasReleased = 'yes';
     shiftState = 'shift_off';
   }
 
@@ -48,21 +44,16 @@ function createKeyboard() {
   }
 
   if (textAreaWidth === null && textAreaHeight === null) {
-    textAreaWidth = 1000;
+    textAreaWidth = 950;
     textAreaHeight = 300;
   }
 
-  // eslint-disable-next-line max-len
-  // console.log(`перезагрузки: ${language}_${shiftState}_caps${capslockState}__${capslockButtonWasUp}_${allText} )`);
-  // console.log(`после перезагрузки: ${array}___selind${selectionIndex}`);
-
   const observer = new ResizeObserver((entries) => {
-    // eslint-disable-next-line no-restricted-syntax
+  // eslint-disable-next-line no-restricted-syntax
     for (const entry of entries) {
       if (entry.contentBoxSize) {
         textAreaWidth = Math.round(entry.contentBoxSize[0].inlineSize);
         textAreaHeight = Math.round(entry.contentBoxSize[0].blockSize);
-        // console.log(` ширина ${textAreaWidth} X высота ${textAreaHeight}`);
       }
     }
   });
@@ -94,7 +85,6 @@ function createKeyboard() {
       UImethods.changeTextareaStyleProperty('caretColor', 'transparent');
       setTimeout(() => {
         UImethods.changeTextareaStyleProperty('caretColor', 'black');
-        // console.log( `set cursor: будет поставлен в позицию ${ selectionIndex}` );
         UImethods.setTextareaSelectionStart(selectionIndex);
         UImethods.setTextareaSelectionEnd(selectionIndex);
       });
@@ -103,9 +93,9 @@ function createKeyboard() {
     function writeKeyboardParametersToLocalStorage() {
       localStorage.setItem('language', language);
       localStorage.setItem('shiftState', shiftState);
-      localStorage.setItem('shiftButton', shiftButton);
+      localStorage.setItem('shiftButtonEventCode', shiftButtonEventCode);
       localStorage.setItem('capslockState', capslockState);
-      localStorage.setItem('capslockButtonWasUp', capslockButtonWasUp);
+      localStorage.setItem('capslockButtonWasReleased', capslockButtonWasReleased);
       localStorage.setItem('allText', allText);
       localStorage.setItem('array', array);
       localStorage.setItem('selectionIndex', selectionIndex);
@@ -114,18 +104,11 @@ function createKeyboard() {
     }
 
     function addSymbol(text) {
-      // console.log(`таймерID ${timeoutIdForAddSymbol}`);
-
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === null) {
-          // console.log('отказ');
           selectionIndex = UImethods.getTextareaSelectionStart();
         }
-        // console.log(`++++++++++++++${selectionIndex}`);
-        // const tail = array.splice(selectionIndex, array.length);
         array = array.concat(text, array.splice(selectionIndex, array.length));
-
-        // console.log(`array___${JSON.stringify(array)}`);
 
         selectionIndex += 1;
         setCursor();
@@ -135,7 +118,6 @@ function createKeyboard() {
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
             array = array.concat(text, array.splice(selectionIndex, array.length));
-            // console.log(`array___${JSON.stringify(array)}`);
             setCursor();
             selectionIndex += 1;
             allText = array.join('');
@@ -150,7 +132,6 @@ function createKeyboard() {
         if (selectionIndex === array.length) return;
 
         array.splice(selectionIndex, 1);
-        // console.log(`array___${JSON.stringify(array)}`);
         setCursor();
         allText = array.join('');
         UImethods.changeTextareaInnerHTML(array.join(''));
@@ -159,7 +140,6 @@ function createKeyboard() {
           intervalIdForAddSymbol = window.setInterval(() => {
             if (selectionIndex === array.length) return;
             array.splice(selectionIndex, 1);
-            // console.log(`array___${JSON.stringify(array)}`);
             setCursor();
             allText = array.join('');
             UImethods.changeTextareaInnerHTML(array.join(''));
@@ -169,16 +149,12 @@ function createKeyboard() {
     }
 
     function backspaceSymbol() {
-      // console.log(`таймерID ${timeoutIdForAddSymbol}`);
-
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === 0) {
-          // console.log('отказ');
           return;
         }
 
         array.splice(selectionIndex - 1, 1);
-        // console.log(`array___${JSON.stringify(array)}`);
         selectionIndex -= 1;
         setCursor();
         allText = array.join('');
@@ -187,11 +163,9 @@ function createKeyboard() {
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
             if (selectionIndex === 0) {
-              // console.log('отказ');
               return;
             }
             array.splice(selectionIndex - 1, 1);
-            // console.log(`array___${JSON.stringify(array)}`);
             selectionIndex -= 1;
             setCursor();
             allText = array.join('');
@@ -204,14 +178,9 @@ function createKeyboard() {
     function tab() {
       if (timeoutIdForAddSymbol === undefined) {
         if (selectionIndex === null) {
-          // console.log('отказ');
           selectionIndex = UImethods.getTextareaSelectionStart();
         }
-        // console.log(`++++++++++++++${selectionIndex}`);
-        // const tail = array.splice(selectionIndex, array.length);
         array = array.concat(' ', ' ', ' ', ' ', array.splice(selectionIndex, array.length));
-
-        // console.log(`array___${JSON.stringify(array)}`);
 
         selectionIndex += 4;
         setCursor();
@@ -221,7 +190,6 @@ function createKeyboard() {
         timeoutIdForAddSymbol = window.setTimeout(() => {
           intervalIdForAddSymbol = window.setInterval(() => {
             array = array.concat(' ', ' ', ' ', ' ', array.splice(selectionIndex, array.length));
-            // console.log(`array___${JSON.stringify(array)}`);
             setCursor();
             selectionIndex += 4;
             allText = array.join('');
@@ -247,26 +215,31 @@ function createKeyboard() {
     }
 
     function changeSymbolRegister() {
-      if (capslockState === 'capslock_on' && capslockButtonWasUp === true) {
-        capslockState = 'capslock_off';
-        capslockButtonWasUp = false;
-      } else if (capslockState === 'capslock_off' && capslockButtonWasUp === true) {
-        capslockState = 'capslock_on';
-        capslockButtonWasUp = false;
-      } else {
+      if (capslockButtonWasReleased !== 'yes') {
         return;
       }
-
-      writeKeyboardParametersToLocalStorage();
-      initiatorOfReload = 'keyboard';
-      document.location.reload();
+      // alert(1)
+      if (capslockState === 'capslock_on') {
+        capslockState = 'capslock_off';
+        capslockButtonWasReleased = 'no';
+        writeKeyboardParametersToLocalStorage();
+        initiatorOfReload = 'keyboard';
+        document.location.reload();
+      } else if (capslockState === 'capslock_off') {
+        capslockState = 'capslock_on';
+        capslockButtonWasReleased = 'no';
+        writeKeyboardParametersToLocalStorage();
+        initiatorOfReload = 'keyboard';
+        document.location.reload();
+      }
     }
 
     function activateShift(eventCode) {
       if (shiftState === 'shift_off') {
         shiftState = 'shift_on';
-        shiftButton = eventCode;
+        shiftButtonEventCode = eventCode;
         writeKeyboardParametersToLocalStorage();
+        initiatorOfReload = 'keyboard';
         document.location.reload();
       }
     }
@@ -274,8 +247,9 @@ function createKeyboard() {
     function deactivateShift(eventCode) {
       if (eventCode === 'ShiftLeft' || eventCode === 'ShiftRight') {
         shiftState = 'shift_off';
-        shiftButton = null;
+        shiftButtonEventCode = null;
         writeKeyboardParametersToLocalStorage();
+        initiatorOfReload = 'keyboard';
         document.location.reload();
       }
     }
@@ -299,13 +273,13 @@ function createKeyboard() {
     }
 
     function highlightButtonShiftLeft(button) {
-      if (shiftState === 'shift_on' && shiftButton === 'ShiftLeft') {
+      if (shiftState === 'shift_on' && shiftButtonEventCode === 'ShiftLeft') {
         button.classList.add('animation');
       }
     }
 
     function highlightButtonShiftRight(button) {
-      if (shiftState === 'shift_on' && shiftButton === 'ShiftRight') {
+      if (shiftState === 'shift_on' && shiftButtonEventCode === 'ShiftRight') {
         button.classList.add('animation');
       }
     }
@@ -375,7 +349,6 @@ function createKeyboard() {
     function addSymbolToTextareaByKeyboard(eventCode) {
       if (!checkIsControlButton(eventCode)) {
         const match = eventCode.match(/([\w]{1,10})$/);
-        // console.log(`совпадение класса ${match[1]}__словарь${dict[match[1]]}`);
         addSymbol(dict[match[1]]);
       }
     }
@@ -409,7 +382,7 @@ function createKeyboard() {
 
     function methodForCapsLock(elem) {
       elem.addEventListener('mousedown', () => {
-        capslockButtonWasUp = true;
+        capslockButtonWasReleased = 'yes';
         changeSymbolRegister();
       });
     }
@@ -459,9 +432,9 @@ function createKeyboard() {
       hangEventListenersForMouseAlpahumericButton(elem, tab);
     }
 
-    function trackCapslockButtonWasUp(eventCode) {
+    function trackCapslockButtonWasReleased(eventCode) {
       if (eventCode === 'CapsLock') {
-        capslockButtonWasUp = true;
+        capslockButtonWasReleased = 'yes';
       }
     }
 
@@ -481,7 +454,7 @@ function createKeyboard() {
       setSelectionIndex,
       methodForShiftButton,
       methodForTabButton,
-      trackCapslockButtonWasUp,
+      trackCapslockButtonWasReleased,
     };
   }
 

@@ -4,10 +4,8 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    width: 100vw;
+    height: auto;
     font-family: "Roboto", "Arial", sans-serif;
     background-color: #21897E;
 }
@@ -18,13 +16,9 @@ body {
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    margin-top: 45px;
-    padding: 15px;
-    background-color: #585858;
-    border-radius: 10px;
-    border: solid 1px #000000;
-    filter: drop-shadow(5px 5px 5px);
-
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
 }
 
 .keyboard {
@@ -33,9 +27,16 @@ body {
     align-items: center;
     justify-content: center;
     min-width: 950px;
+    margin: 30px 0;
+    padding: 15px;
+    background-color: #585858;
+    border-radius: 10px;
+    border: solid 1px #000000;
+    filter: drop-shadow(5px 5px 5px);
 }
 
 .keyboard-screen_wrapper {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -50,8 +51,8 @@ body {
     width: 100%;
 }
 .screen_textarea {
-    width: 1250px;
-    height: 200px;
+    min-width: 250px;
+    min-height: 50px;
     font-family: "Roboto", "Arial", sans-serif;
     font-size: 20px;
     letter-spacing: 0.3px;
@@ -150,10 +151,10 @@ body {
     font-size: 24px;
 }
 
-.fifth-row > .flag {
+.flag {
     position: absolute;
-    top: 0;
-    left: -6px;
+    bottom: 5px;
+    right: 5px;
     height: 18px;
     width: 30px;
     border: solid 1px #000000;
@@ -164,12 +165,12 @@ body {
     background-color: transparent;
 }
 
-.fifth-row > .flag:hover{
+.flag:hover{
     cursor: default;
     background-color: transparent;
 }
 
-.fifth-row > .flag:before {
+.flag:before {
     border: none;
 }
 
@@ -200,38 +201,6 @@ body {
     font-weight: bold;
 }
 
-.message_flag {
-    position: relative;
-    width: 25px;
-    height: 15px;
-    margin: 0 0 0 40px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.message_flag:before {
-    position: absolute;
-    top: 2px;
-    left: -15px;
-    content: "";
-    border-top: solid 5px transparent;
-    border-bottom: solid 5px transparent;
-    border-left: solid 10px #000000;
-    border-right: solid 1px transparent;
-}
-
-.message_flag:after {
-    position: absolute;
-    top: 2px;
-    left: -27px;
-    content: "";
-    border-top: solid 5px transparent;
-    border-bottom: solid 5px transparent;
-    border-left: solid 10px #000000;
-    border-right: solid 1px transparent;
-}
-
 .message_windows10-logo {
     position: relative;
     width: 130px;
@@ -249,9 +218,19 @@ body {
   font-size: 14px;
 }
 
+.eslint {
+    width: 855px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+.eslint > p,
 .ecmascript6-features > p {
     margin: 0 0 8px; 
-    font-weight: bold;
 }
 
 .ecmascript6-features_ul {
@@ -263,6 +242,7 @@ body {
     font-size: 14px;
 }
 
+.message_language,
 .class-name,
 .modules,
 .let,

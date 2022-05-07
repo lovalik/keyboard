@@ -188,8 +188,6 @@ function createUI({
   const fifthRowArrowRight = keyboard.querySelector('.key_ArrowRight');
   const fifthRowButtonCtrlRight = keyboard.querySelector('.key_ControlRight');
 
-  const flag = keyboard.querySelector('.message_flag');
-
   methods.methodForAlphanumericButton(fifthRowButtonCtrlLeft);
   methods.methodForAlphanumericButton(fifthRowButtonWin);
   methods.methodForAlphanumericButton(fifthRowAltLeft);
@@ -205,8 +203,6 @@ function createUI({
   methods.highlightButtonCapsLock(thirdRowButtonCapsLock);
 
   fifthRowFlag.style.backgroundImage = dict.flag;
-  flag.disabled = true;
-  flag.style.backgroundImage = dict.contrFlag;
 
   document.addEventListener('keydown', (event) => {
     event.preventDefault();
@@ -219,7 +215,7 @@ function createUI({
   document.addEventListener('keyup', (event) => {
     // console.log(`UI.JS-'KEYUP'__+++${event.code}`);
     methods.deactivateShift(event.code);
-    methods.trackCapslockButtonWasUp(event.code);
+    methods.trackCapslockButtonWasReleased(event.code);
     methods.removeClassForAnimation(event.code, allButtons);
   });
 
