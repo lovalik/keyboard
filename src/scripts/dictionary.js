@@ -1,7 +1,7 @@
 const dictionary = {
 
   eng: {
-    'capslock_off': {
+    capslock_off: {
       shift_off: {
         // Первый ряд
         Backquote: '`',
@@ -68,7 +68,7 @@ const dictionary = {
         MetaLeft: 'Win',
         AltLeft: 'Alt',
         AltRight: 'Alt',
-        flag: "url('./src/assets/images/gb.svg')",
+        flag: "url('./assets/images/gb.svg')",
         language: 'русскую',
         Space: ' ',
         ArrowRight: '&#9658;',
@@ -142,7 +142,7 @@ const dictionary = {
         MetaLeft: 'Win',
         AltLeft: 'Alt',
         AltRight: 'Alt',
-        flag: "url('./src/assets/images/gb.svg')",
+        flag: "url('./assets/images/gb.svg')",
         language: 'русскую',
         Space: ' ',
         ArrowRight: '&#9658;',
@@ -218,7 +218,7 @@ const dictionary = {
         MetaLeft: 'Win',
         AltLeft: 'Alt',
         AltRight: 'Alt',
-        flag: "url('./src/assets/images/gb.svg')",
+        flag: "url('./assets/images/gb.svg')",
         language: 'русскую',
         Space: ' ',
         ArrowRight: '&#9658;',
@@ -292,7 +292,7 @@ const dictionary = {
         MetaLeft: 'Win',
         AltLeft: 'Alt',
         AltRight: 'Alt',
-        flag: "url('./src/assets/images/gb.svg')",
+        flag: "url('./assets/images/gb.svg')",
         language: 'русскую',
         Space: ' ',
         ArrowRight: '&#9658;',
@@ -370,7 +370,7 @@ const dictionary = {
         MetaLeft: 'Win',
         AltLeft: 'Alt',
         AltRight: 'Alt',
-        flag: "url('./src/assets/images/rf.svg')",
+        flag: "url('./assets/images/rf.svg')",
         language: 'английскую',
         Space: ' ',
         ArrowRight: '&#9658;',
@@ -444,7 +444,7 @@ const dictionary = {
         MetaLeft: 'Win',
         AltLeft: 'Alt',
         AltRight: 'Alt',
-        flag: "url('./src/assets/images/rf.svg')",
+        flag: "url('./assets/images/rf.svg')",
         language: 'английскую',
         Space: ' ',
         ArrowRight: '&#9658;',
@@ -520,7 +520,7 @@ const dictionary = {
         MetaLeft: 'Win',
         AltLeft: 'Alt',
         AltRight: 'Alt',
-        flag: "url('./src/assets/images/rf.svg')",
+        flag: "url('./assets/images/rf.svg')",
         language: 'английскую',
         Space: ' ',
         ArrowRight: '&#9658;',
@@ -594,7 +594,7 @@ const dictionary = {
         MetaLeft: 'Win',
         AltLeft: 'Alt',
         AltRight: 'Alt',
-        flag: "url('./src/assets/images/rf.svg')",
+        flag: "url('./assets/images/rf.svg')",
         language: 'английскую',
         Space: ' ',
         ArrowRight: '&#9658;',
