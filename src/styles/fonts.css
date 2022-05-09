@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Arial';
+    src: local( 'Arial' ),
+            url( "../fonts/arial/arialmt.ttf") format('truetype'); 
+    font-style: normal;
+    font-weight: 400;
+}
+    
+@font-face {
+    font-family: 'Roboto';
+    src: local( 'Roboto' ),
+            url( "../fonts/roboto/Roboto-Regular.ttf") format('truetype'); 
+    font-style: normal;
+    font-weight: 400;
+}
