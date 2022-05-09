@@ -28,9 +28,9 @@ function createKeyboard() {
   }
 
   if (capslockState === null) {
-    capslockState = 'capslock_off';
+    capslockState = 'capslockOff';
     capslockButtonWasReleased = 'yes';
-    shiftState = 'shift_off';
+    shiftState = 'shiftOff';
   }
 
   console.log(JSON.stringify(dictionary[language][capslockState][shiftState]));
@@ -219,14 +219,14 @@ function createKeyboard() {
       if (capslockButtonWasReleased !== 'yes') {
         return;
       }
-      if (capslockState === 'capslock_on') {
-        capslockState = 'capslock_off';
+      if (capslockState === 'capslockOn') {
+        capslockState = 'capslockOff';
         capslockButtonWasReleased = 'no';
         writeKeyboardParametersToLocalStorage();
         initiatorOfReload = 'keyboard';
         document.location.reload();
-      } else if (capslockState === 'capslock_off') {
-        capslockState = 'capslock_on';
+      } else if (capslockState === 'capslockOff') {
+        capslockState = 'capslockOn';
         capslockButtonWasReleased = 'no';
         writeKeyboardParametersToLocalStorage();
         initiatorOfReload = 'keyboard';
@@ -235,8 +235,8 @@ function createKeyboard() {
     }
 
     function activateShift(eventCode) {
-      if (shiftState === 'shift_off') {
-        shiftState = 'shift_on';
+      if (shiftState === 'shiftOff') {
+        shiftState = 'shiftOn';
         shiftButtonEventCode = eventCode;
         writeKeyboardParametersToLocalStorage();
         initiatorOfReload = 'keyboard';
@@ -246,7 +246,7 @@ function createKeyboard() {
 
     function deactivateShift(eventCode) {
       if (eventCode === 'ShiftLeft' || eventCode === 'ShiftRight') {
-        shiftState = 'shift_off';
+        shiftState = 'shiftOff';
         shiftButtonEventCode = null;
         writeKeyboardParametersToLocalStorage();
         initiatorOfReload = 'keyboard';
@@ -267,19 +267,19 @@ function createKeyboard() {
     }
 
     function highlightButtonCapsLock(button) {
-      if (capslockState === 'capslock_on') {
+      if (capslockState === 'capslockOn') {
         button.classList.add('animation');
       }
     }
 
     function highlightButtonShiftLeft(button) {
-      if (shiftState === 'shift_on' && shiftButtonEventCode === 'ShiftLeft') {
+      if (shiftState === 'shiftOn' && shiftButtonEventCode === 'ShiftLeft') {
         button.classList.add('animation');
       }
     }
 
     function highlightButtonShiftRight(button) {
-      if (shiftState === 'shift_on' && shiftButtonEventCode === 'ShiftRight') {
+      if (shiftState === 'shiftOn' && shiftButtonEventCode === 'ShiftRight') {
         button.classList.add('animation');
       }
     }

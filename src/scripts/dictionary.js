@@ -1,8 +1,8 @@
 const dictionary = {
 
   eng: {
-    capslock_off: {
-      shift_off: {
+    capslockOff: {
+      shiftOff: {
         // Первый ряд
         Backquote: '`',
         Digit1: '1',
@@ -76,7 +76,7 @@ const dictionary = {
         ArrowLeft: '&#9668;',
       },
 
-      shift_on: {
+      shiftOn: {
         // Первый ряд
         Backquote: '~',
         Digit1: '!',
@@ -151,8 +151,8 @@ const dictionary = {
       },
     },
 
-    capslock_on: {
-      shift_off: {
+    capslockOn: {
+      shiftOff: {
         // Первый ряд
         Backquote: '`',
         Digit1: '1',
@@ -226,7 +226,7 @@ const dictionary = {
         ArrowLeft: '&#9668;',
       },
 
-      shift_on: {
+      shiftOn: {
         // Первый ряд
         Backquote: '~',
         Digit1: '!',
@@ -303,8 +303,8 @@ const dictionary = {
   },
 
   rus: {
-    capslock_off: {
-      shift_off: {
+    capslockOff: {
+      shiftOff: {
         // Первый ряд
         Backquote: 'ё',
         Digit1: '1',
@@ -378,7 +378,7 @@ const dictionary = {
         ArrowLeft: '&#9668;',
       },
 
-      shift_on: {
+      shiftOn: {
         // Первый ряд
         Backquote: 'Ё',
         Digit1: '!',
@@ -453,8 +453,8 @@ const dictionary = {
       },
     },
 
-    capslock_on: {
-      shift_off: {
+    capslockOn: {
+      shiftOff: {
         // Первый ряд
         Backquote: 'Ё',
         Digit1: '1',
@@ -528,7 +528,7 @@ const dictionary = {
         ArrowLeft: '&#9668;',
       },
 
-      shift_on: {
+      shiftOn: {
         // Первый ряд
         Backquote: 'ё',
         Digit1: '!',
