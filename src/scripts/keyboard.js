@@ -33,8 +33,6 @@ function createKeyboard() {
     shiftState = 'shiftOff';
   }
 
-  console.log(JSON.stringify(dictionary[language][capslockState][shiftState]));
-
   const dict = dictionary[language][capslockState][shiftState];
 
   if (allText === null && arrayOfAllText === null) {
