@@ -1,4 +1,4 @@
 // eslint-disable-next-line import/extensions
-import createKeyboard from './main.js';
+import createKeyboard from './scripts/keyboard.js';
 
 createKeyboard();

@@ -1,7 +1,6 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // eslint-disable-next-line eqeqeq
@@ -19,10 +18,6 @@ const config = {
     host: 'localhost',
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-    }),
-
     new MiniCssExtractPlugin(),
 
     // Add your plugins here
