@@ -202,7 +202,7 @@ function createUI({
   methods.highlightButtonShiftRight(forthRowButtonShiftRight);
   methods.highlightButtonCapsLock(thirdRowButtonCapsLock);
 
-  fifthRowFlag.style.backgroundImage = dict.flag;
+  methods.addClassForFlagElement(fifthRowFlag);
 
   document.addEventListener('keydown', (event) => {
     event.preventDefault();

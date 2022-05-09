@@ -249,3 +249,10 @@ h2 {
 .const {
     font-weight: 900;
 }
+
+.great-britan-flag {
+    background-image: url('../assets/images/gb.svg');   
+}
+.russian-federation-flag {
+    background-image: url('../assets/images/rf.svg');   
+}

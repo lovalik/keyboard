@@ -502,6 +502,16 @@ function createKeyboard() {
       });
     }
 
+    function addClassForFlagElement(elem) {
+      if (language === 'eng') {
+        elem.classList.remove('russian-federation-flag');
+        elem.classList.add('great-britan-flag');
+      } else {
+        elem.classList.remove('great-britan-flag');
+        elem.classList.add('russian-federation-flag');
+      }
+    }
+
     return {
       addClassForAnimation,
       removeClassForAnimation,
@@ -522,6 +532,7 @@ function createKeyboard() {
       methodForWinButton,
       methodForAltButton,
       methodForCtrlButton,
+      addClassForFlagElement,
     };
   }
 
