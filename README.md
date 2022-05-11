@@ -1,5 +1,1 @@
-Task Keyboard
-Email: 
-lovalikk@gmail.com
-Discord:
-Lobyak Valentin#8812
+Task RS School Keyboard
